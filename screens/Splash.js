@@ -1,11 +1,16 @@
 import React from 'react'
-import {View, Text} from 'react-native'
+import {View, Text, Image} from 'react-native'
 import styles from '../styles/screens/Splash.component.style'
+import logo from "../assets/images/artReadLogo.png";
+
 
 const Splash = () => {
     return(
         <View style = {styles.container}>
-            <Text>Splash</Text>
+            <Image
+                source={logo}
+                style = {{width: 200, height: 200}}
+            />
         </View>
     )
 }
