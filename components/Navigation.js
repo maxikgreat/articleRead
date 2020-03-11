@@ -6,14 +6,12 @@ import { Ionicons } from '@expo/vector-icons';
 import Home from "../screens/Home";
 import Favourite from '../screens/Favourite'
 import Settings from '../screens/Settings'
-import {useSelector} from "react-redux";
+
 
 const Tab = createBottomTabNavigator()
 
 
 export default function Navigator() {
-
-    const user = useSelector(state => state.user)
 
     return (
         <NavigationContainer>
@@ -29,8 +27,8 @@ export default function Navigator() {
                         switch(route.name){
                             case "Home":
                                 iconName = focused
-                                    ? 'ios-information-circle'
-                                    : 'ios-information-circle-outline'
+                                    ? 'ios-home'
+                                    : 'ios-home'
                                 break
                             case "Favourite":
                                 iconName = focused

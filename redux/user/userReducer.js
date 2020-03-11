@@ -2,7 +2,7 @@
 const initialState = {
     token: null,
     error: null,
-    isLoading: true
+    isLoading: false
 }
 
 export default function userReducer(state = initialState, {type, payload}){
