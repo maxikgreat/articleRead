@@ -4,21 +4,21 @@ import {
     View,
     TextInput,
     TouchableOpacity,
-    Image,
 } from 'react-native';
 import styles from '../styles/components/SignUpForm.component.style'
 import {Ionicons} from "@expo/vector-icons";
 
-const SignUpForm = () => {
+const SignUpForm = ({toggleForm}) => {
 
 
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
+
         return (
             <View style={styles.container}>
-                <Ionicons name={"md-log-in"} size={"80"} color = {"#cc0000"}/>
+                <Ionicons name={"md-log-in"} size={80} color = {"#cc0000"}/>
                 <View style={styles.inputContainer}>
                     <TextInput style={styles.inputs}
                                placeholder="Email"
@@ -52,7 +52,10 @@ const SignUpForm = () => {
                     <Text style={styles.loginText}>Sign Up</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.buttonContainer}>
+                <TouchableOpacity
+                    style={styles.buttonContainer}
+                    onPress = {() => toggleForm()}
+                >
                     <Text style={styles.togglerText}>Have an account?</Text>
                 </TouchableOpacity>
             </View>

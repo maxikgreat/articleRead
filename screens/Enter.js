@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {View} from 'react-native'
 //components
 import SignUpForm from "../components/SignUpForm";
@@ -13,13 +13,27 @@ const Enter = () => {
 
     const user = useSelector(state => state.user)
 
+    const [signUpToggle, setToggle] = useState(false)
+
+    const toggleForm = () => {
+        setToggle(!signUpToggle)
+    }
+
+
     if(user.isLoading){
         return <Splash/>
     }
 
     return(
         <View style = {styles.container}>
-            <SignUpForm/>
+            { signUpToggle
+                ? <SignUpForm
+                        toggleForm = {toggleForm}
+                    />
+                : <LogInForm
+                        toggleForm = {toggleForm}
+                    />
+            }
         </View>
     )
 }
