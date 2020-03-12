@@ -19,8 +19,8 @@ const useForm = (callback, validate) => {
         setValues(values => ({...values, ...values.password = ""}))
     };
 
-    const handleChange = () => {
-        setValues(values => ({ ...values, [event.target.name]: event.target.value }));
+    const handleChange = ({nativeEvent}, inputName) => {
+        setValues( {...values, [inputName]: nativeEvent.text });
     };
 
     return {

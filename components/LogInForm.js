@@ -29,11 +29,10 @@ const LogInForm = ({toggleForm}) => {
             <View style={styles.inputContainer}>
                 <TextInput style={styles.inputs}
                            placeholder="Email"
-                           name="email"
-                           value={values.email || ""}
+                           value={values.email}
                            keyboardType="email-address"
                            underlineColorAndroid='transparent'
-                           onChangeText={handleChange}
+                           onChange={(nativeEvent) => handleChange(nativeEvent, "email")}
                 />
                 <Ionicons style = {styles.inputIcon} name={"ios-mail"} size = {30} color={"#cc0000"} />
             </View>
@@ -41,11 +40,11 @@ const LogInForm = ({toggleForm}) => {
             <View style={styles.inputContainer}>
                 <TextInput style={styles.inputs}
                            placeholder="Password"
-                           name="password"
-                           value={values.password || ""}
+                           value={values.password}
                            secureTextEntry={true}
+                           textContentType={"password"}
                            underlineColorAndroid='transparent'
-                           onChangeText={handleChange}
+                           onChange={(nativeEvent) => handleChange(nativeEvent, "password")}
                 />
                 <Ionicons style = {styles.inputIcon} name={"ios-lock"} size = {30} color={"#cc0000"} />
             </View>

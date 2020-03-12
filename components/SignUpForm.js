@@ -29,11 +29,10 @@ const SignUpForm = ({toggleForm}) => {
                 <View style={styles.inputContainer}>
                     <TextInput style={styles.inputs}
                                placeholder="Email"
-                               name = "email"
-                               value={values.email || ""}
+                               value={values.email}
                                keyboardType="email-address"
                                underlineColorAndroid='transparent'
-                               onChangeText={handleChange}
+                               onChange={(nativeEvent) => handleChange(nativeEvent, "email")}
                     />
                     <Ionicons style = {styles.inputIcon} name={"ios-mail"} size = {30} color={"#cc0000"} />
                 </View>
@@ -41,21 +40,22 @@ const SignUpForm = ({toggleForm}) => {
                 <View style={styles.inputContainer}>
                     <TextInput style={styles.inputs}
                                placeholder="Username (optional)"
-                               name = "username"
-                               value = {values.username || ""}
+                               value = {values.username}
                                underlineColorAndroid='transparent'
-                               onChangeText={handleChange}
+                               textContentType={"nickname"}
+                               onChange={(nativeEvent) => handleChange(nativeEvent, "username")}
                     />
                     <Ionicons style = {styles.inputIcon} name={"md-person"} size = {30} color={"#cc0000"} />
                 </View>
                 <View style={styles.inputContainer}>
                     <TextInput style={styles.inputs}
+                               autoCorrect={false}
                                placeholder="Password"
-                               name = "password"
-                               value = {values.password || ""}
+                               value = {values.password}
                                secureTextEntry={true}
+                               textContentType={"password"}
                                underlineColorAndroid='transparent'
-                               onChangeText={handleChange}
+                               onChange={(nativeEvent) => handleChange(nativeEvent, "password")}
                     />
                     <Ionicons style = {styles.inputIcon} name={"ios-lock"} size = {30} color={"#cc0000"} />
                 </View>
