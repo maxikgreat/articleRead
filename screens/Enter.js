@@ -13,7 +13,7 @@ const Enter = () => {
 
     const user = useSelector(state => state.user)
 
-    const [signUpToggle, setToggle] = useState(false)
+    const [signUpToggle, setToggle] = useState(true)
 
     const toggleForm = () => {
         setToggle(!signUpToggle)

@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         width: 300,
         height:45,
-        marginBottom:20,
+        marginTop:20,
         flexDirection: 'row',
         alignItems:'center',
         shadowColor: "#000",
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         height:45,
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom:20,
+        marginTop:20,
         width:300,
         borderRadius:30,
         backgroundColor:'transparent'
@@ -69,7 +69,15 @@ const styles = StyleSheet.create({
         color:"#cc0000",
         fontWeight:'bold',
         fontSize: 15,
+    },
+    message:{
+        marginTop: 5
+    },
+    errorMessage:{
+        color: '#cc0000',
+        marginTop: 5
     }
+
 });
 
 export default styles

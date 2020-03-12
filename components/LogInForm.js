@@ -1,4 +1,5 @@
-import React, {useState}  from 'react';
+import React from 'react';
+import useForm from "../customHooks/useForm";
 import {
     Text,
     View,
@@ -7,13 +8,20 @@ import {
 } from 'react-native';
 import styles from '../styles/components/SignUpForm.component.style'
 import {Ionicons} from "@expo/vector-icons";
+import validationRules from "../helpFunctions/validationRules";
 
 const LogInForm = ({toggleForm}) => {
 
+    const tryLogIn = () => {
+        console.log("Log in")
+    }
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-
+    const {
+        values,
+        errors,
+        handleChange,
+        handleSubmit
+    } = useForm(tryLogIn, validationRules)
 
     return (
         <View style={styles.container}>
@@ -21,24 +29,31 @@ const LogInForm = ({toggleForm}) => {
             <View style={styles.inputContainer}>
                 <TextInput style={styles.inputs}
                            placeholder="Email"
+                           name="email"
+                           value={values.email || ""}
                            keyboardType="email-address"
                            underlineColorAndroid='transparent'
-                           onChangeText={() => setEmail({email})}
+                           onChangeText={handleChange}
                 />
                 <Ionicons style = {styles.inputIcon} name={"ios-mail"} size = {30} color={"#cc0000"} />
             </View>
-
+            {errors.email ? <Text style={styles.errorMessage}>{errors.email}</Text> : null}
             <View style={styles.inputContainer}>
                 <TextInput style={styles.inputs}
                            placeholder="Password"
+                           name="password"
+                           value={values.password || ""}
                            secureTextEntry={true}
                            underlineColorAndroid='transparent'
-                           onChangeText={() => setPassword({password})}
+                           onChangeText={handleChange}
                 />
                 <Ionicons style = {styles.inputIcon} name={"ios-lock"} size = {30} color={"#cc0000"} />
             </View>
-
-            <TouchableOpacity style={[styles.buttonContainer, styles.loginButton]}>
+            {errors.password ? <Text style={styles.errorMessage}>{errors.password}</Text> : null}
+            <TouchableOpacity
+                style={[styles.buttonContainer, styles.loginButton]}
+                onPress = {handleSubmit}
+            >
                 <Text style={styles.loginText}>Log In</Text>
             </TouchableOpacity>
 
