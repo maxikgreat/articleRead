@@ -19,7 +19,6 @@ const Enter = () => {
         setToggle(!signUpToggle)
     }
 
-
     if(user.isLoading){
         return <Splash/>
     }

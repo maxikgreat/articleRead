@@ -2,7 +2,8 @@
 const initialState = {
     token: null,
     error: null,
-    isLoading: false
+    isLoading: false,
+    data: null
 }
 
 export default function userReducer(state = initialState, {type, payload}){
