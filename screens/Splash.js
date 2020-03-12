@@ -1,16 +1,13 @@
 import React from 'react'
-import {View, Text, Image} from 'react-native'
+import {View, Image, ActivityIndicator} from 'react-native'
 import styles from '../styles/screens/Splash.component.style'
-import logo from "../assets/images/artReadLogo.png";
-
+import logoText from '../assets/images/logoName.png'
 
 const Splash = () => {
     return(
         <View style = {styles.container}>
-            <Image
-                source={logo}
-                style = {{width: 200, height: 200}}
-            />
+            <Image source={logoText} style = {{width: 300, height: 100, resizeMode: 'center'} }/>
+            <ActivityIndicator size="large"/>
         </View>
     )
 }

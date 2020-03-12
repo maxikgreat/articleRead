@@ -9,11 +9,16 @@ import {
 import styles from '../styles/components/SignUpForm.component.style'
 import {Ionicons} from "@expo/vector-icons";
 import validationRules from "../helpFunctions/validationRules";
+import {useDispatch} from "react-redux";
+import signUp from "../redux/user/userAction";
 
 const SignUpForm = ({toggleForm}) => {
 
+    const dispatch = useDispatch()
+
     const trySignUp = () => {
-        console.log("Sign up")
+        console.log(values)
+        dispatch(signUp(values.email, values.password))
     }
 
     const {

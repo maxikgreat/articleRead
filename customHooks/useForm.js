@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 const useForm = (callback, validate) => {
 
-    const [values, setValues] = useState({});
+    const [values, setValues] = useState({email: "test@gmail.com", username: "max", password: "123456"});
     const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -16,7 +16,6 @@ const useForm = (callback, validate) => {
     const handleSubmit = () => {
         setErrors(validate(values));
         setIsSubmitting(true);
-        setValues(values => ({...values, ...values.password = ""}))
     };
 
     const handleChange = ({nativeEvent}, inputName) => {
