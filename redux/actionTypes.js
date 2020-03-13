@@ -8,4 +8,7 @@ export const LOG_OUT = "LOG_OUT"
 //set username
 export const SET_USERNAME = "SET_USERNAME"
 
+//error
+export const CLEAR_ERROR = "CLEAR_ERROR"
+
 

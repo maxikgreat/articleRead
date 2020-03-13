@@ -1,6 +1,6 @@
 
 import firebase from '../../firebase'
-import {SUCCESS_LOG_IN, ERROR_LOG_IN, ERROR_SIGN_UP, SET_USERNAME} from "../actionTypes";
+import {SUCCESS_LOG_IN, ERROR_LOG_IN, ERROR_SIGN_UP, SET_USERNAME, LOG_OUT, CLEAR_ERROR} from "../actionTypes";
 
 export  function autoLogin(){
     return async dispatch => {
@@ -31,14 +31,30 @@ export function signUp(email, password, username = ""){
                 }
             })
             .catch((error) => {
-            dispatch({
-                type: ERROR_SIGN_UP,
-                payload: error.message
-            })
+                dispatch({
+                    type: ERROR_SIGN_UP,
+                    payload: error.message
+                })
         });
     }
 }
 
 export function logOut(){
-    //TODO logout
+    return async dispatch => {
+        await firebase.auth().signOut()
+            .then(() => {
+                dispatch({
+                    type: LOG_OUT
+                })
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+}
+
+export function clearError(){
+    return{
+        type: CLEAR_ERROR
+    }
 }

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {View} from 'react-native'
+import {Alert, View} from 'react-native'
 //components
 import SignUpForm from "../components/SignUpForm";
 import LogInForm from "../components/LogInForm";
@@ -9,7 +9,7 @@ import Splash from "./Splash";
 import styles from '../styles/screens/Enter.component.style'
 //redux
 import {useSelector, useDispatch} from "react-redux";
-import {autoLogin} from "../redux/user/userAction";
+import {autoLogin, clearError, logOut} from "../redux/user/userAction";
 
 const Enter = () => {
 
@@ -45,6 +45,18 @@ const Enter = () => {
                         toggleForm = {toggleForm}
                     />
             }
+            {user.error
+                ? Alert.alert(
+                    'Error!',
+                    `${user.error}`,
+                    [{
+                        onPress: () => {dispatch(clearError())},
+                        text: 'Cancel',
+                        style: 'cancel',
+                    }],
+                    { cancelable: false }
+                )
+            : null}
         </View>
     )
 }

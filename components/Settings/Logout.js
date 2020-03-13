@@ -2,6 +2,7 @@ import React from 'react'
 import styles from "../../styles/components/Logout.component.style";
 import {Text, TouchableOpacity, Alert} from "react-native";
 import {useDispatch} from "react-redux";
+import {logOut} from "../../redux/user/userAction";
 
 const Logout = () => {
 
@@ -15,7 +16,7 @@ const Logout = () => {
                     'Log Out',
                     'Are you sure?',
                     [
-                        { text: 'OK', onPress: () => {dispatch(logout())}},
+                        { text: 'OK', onPress: () => {dispatch(logOut())}},
                         {
                             text: 'Cancel',
                             style: 'cancel',
