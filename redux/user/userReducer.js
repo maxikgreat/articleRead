@@ -1,9 +1,9 @@
-import {SUCCESS_AUTO_LOGIN, ERROR_AUTO_LOGIN} from "../actionTypes";
+import {SUCCESS_LOG_IN, ERROR_LOG_IN, SET_USERNAME} from "../actionTypes";
 
 const initialState = {
+    user: null,
+    name: null,
     logged: false,
-    uId: null,
-    token: null,
     error: null,
     isLoading: true,
     data: null
@@ -11,18 +11,23 @@ const initialState = {
 
 export default function userReducer(state = initialState, {type, payload}){
     switch (type) {
-        case SUCCESS_AUTO_LOGIN: {
+        case SUCCESS_LOG_IN:
             return{
                 ...state,
                 logged: true,
-                isLoading: false
+                isLoading: false,
+                user: payload
             }
-        }
-        case ERROR_AUTO_LOGIN:
+        case ERROR_LOG_IN:
             return{
                 ...state,
                 logged: false,
                 isLoading: false
+            }
+        case SET_USERNAME:
+            return{
+                ...state,
+                name: payload
             }
         default:
             return state

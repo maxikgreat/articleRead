@@ -17,8 +17,7 @@ const SignUpForm = ({toggleForm}) => {
     const dispatch = useDispatch()
 
     const trySignUp = () => {
-        console.log(values)
-        dispatch(signUp(values.email, values.password))
+        dispatch(signUp(values.email, values.password, values.username))
     }
 
     const {

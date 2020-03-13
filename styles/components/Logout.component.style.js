@@ -1,0 +1,32 @@
+import {StyleSheet} from 'react-native'
+
+export default StyleSheet.create({
+    container:{
+        flex:1,
+        justifyContent: "center",
+        alignItems: 'center'
+    },
+    buttonContainer: {
+        height:45,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop:20,
+        width:300,
+        borderRadius:30,
+        backgroundColor:'transparent'
+    },
+    logoutButton: {
+        backgroundColor: "#cc0000",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 9,
+        },
+        shadowOpacity: 0.50,
+        shadowRadius: 12.35,
+        elevation: 19,
+    },
+    logoutText: {
+        color: '#fff'
+    }
+})

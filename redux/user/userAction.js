@@ -1,34 +1,44 @@
 
 import firebase from '../../firebase'
-import {SUCCESS_AUTO_LOGIN, ERROR_AUTO_LOGIN, SUCCESS_SIGN_UP} from "../actionTypes";
-
+import {SUCCESS_LOG_IN, ERROR_LOG_IN, ERROR_SIGN_UP, SET_USERNAME} from "../actionTypes";
 
 export  function autoLogin(){
     return async dispatch => {
         await firebase.auth().onAuthStateChanged(user => {
             if(user) {
-                console.log("USER AUTO LOGIN: ", user)
                 dispatch({
-                    type: SUCCESS_AUTO_LOGIN
+                    type: SUCCESS_LOG_IN,
+                    payload: user
                 })
             } else {
                 dispatch({
-                    type: ERROR_AUTO_LOGIN
+                    type: ERROR_LOG_IN
                 })
             }
         })
     }
 }
 
-export function signUp(email, password){
+export function signUp(email, password, username = ""){
     return async dispatch => {
-        console.log("Reducer mail " + email)
-        console.log("Reducer pass " + password)
-        const userResp = await firebase.auth().createUserWithEmailAndPassword(email, password).catch((error) => {
-            console.log(error.code);
-            console.log(error.message);
+        await firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then(() => {
+                if(username){
+                    dispatch({
+                        type: SET_USERNAME,
+                        payload: username
+                    })
+                }
+            })
+            .catch((error) => {
+            dispatch({
+                type: ERROR_SIGN_UP,
+                payload: error.message
+            })
         });
-        console.log(userResp.user)
     }
+}
 
+export function logOut(){
+    //TODO logout
 }
