@@ -5,13 +5,15 @@ export const ERROR_LOG_IN = "ERROR_LOG_IN"
 export const ERROR_SIGN_UP = "ERROR_SIGN_UP"
 //logout
 export const LOG_OUT = "LOG_OUT"
-//set username
-export const SET_USERNAME = "SET_USERNAME"
-
 //error
 export const CLEAR_ERROR = "CLEAR_ERROR"
 //load
 // export const LOADING_START = "LOADING_START"
- export const LOADING_END = "LOADING_END"
+export const LOADING_END = "LOADING_END"
 
+
+//-------------_DATABASE_------------------
+export const SHOW_LOADER = "SHOW_LOADER"
+export const FETCH_DATA = "FETCH_DATA"
+export const ERROR_FETCH = "ERROR_FETCH"
 

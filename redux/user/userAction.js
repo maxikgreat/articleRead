@@ -4,7 +4,6 @@ import {
     SUCCESS_LOG_IN,
     ERROR_LOG_IN,
     ERROR_SIGN_UP,
-    SET_USERNAME,
     LOG_OUT,
     CLEAR_ERROR,
     LOADING_END
@@ -30,13 +29,10 @@ export  function autoLogin(){
 export function signUp(email, password, username = ""){
     return async dispatch => {
         await firebase.auth().createUserWithEmailAndPassword(email, password)
-            .then(() => {
-                if(username){
-                    dispatch({
-                        type: SET_USERNAME,
-                        payload: username
-                    })
-                }
+            .then((user) => {
+                firebase.database().ref("/" + user.user.uid).set({
+                    name: username
+                })
             })
             .catch((error) => {
                 dispatch({
