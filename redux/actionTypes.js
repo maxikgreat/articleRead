@@ -10,5 +10,8 @@ export const SET_USERNAME = "SET_USERNAME"
 
 //error
 export const CLEAR_ERROR = "CLEAR_ERROR"
+//load
+// export const LOADING_START = "LOADING_START"
+ export const LOADING_END = "LOADING_END"
 
 

@@ -1,4 +1,12 @@
-import {SUCCESS_LOG_IN, ERROR_LOG_IN, SET_USERNAME, LOG_OUT, ERROR_SIGN_UP, CLEAR_ERROR} from "../actionTypes";
+import {
+    SUCCESS_LOG_IN,
+    ERROR_LOG_IN,
+    SET_USERNAME,
+    LOG_OUT,
+    ERROR_SIGN_UP,
+    CLEAR_ERROR,
+    LOADING_END
+} from "../actionTypes";
 
 const initialState = {
     user: null,
@@ -21,8 +29,8 @@ export default function userReducer(state = initialState, {type, payload}){
         case ERROR_LOG_IN:
             return{
                 ...state,
-                logged: false,
-                isLoading: false
+                isLoading: false,
+                error: payload
             }
         case SET_USERNAME:
             return{
@@ -32,6 +40,7 @@ export default function userReducer(state = initialState, {type, payload}){
         case ERROR_SIGN_UP:
             return{
                 ...state,
+                isLoading: false,
                 error: payload
             }
         case LOG_OUT:
@@ -46,6 +55,10 @@ export default function userReducer(state = initialState, {type, payload}){
             return{
                 ...state,
                 error: null
+            }
+        case LOADING_END:
+            return{
+                isLoading: false
             }
         default:
             return state

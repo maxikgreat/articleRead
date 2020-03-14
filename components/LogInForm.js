@@ -8,12 +8,16 @@ import {
 } from 'react-native';
 import styles from '../styles/components/SignUpForm.component.style'
 import {Ionicons} from "@expo/vector-icons";
+import {useDispatch} from "react-redux";
 import validationRules from "../helpFunctions/validationRules";
+import {logIn} from "../redux/user/userAction";
 
 const LogInForm = ({toggleForm}) => {
 
+    const dispatch = useDispatch()
+
     const tryLogIn = () => {
-        console.log("Log in")
+        dispatch(logIn(values.email, values.password))
     }
 
     const {
