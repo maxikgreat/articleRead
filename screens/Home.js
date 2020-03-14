@@ -22,20 +22,20 @@ const Home = () => {
                 : userData.error
                     ? <Text>{userData.error}</Text>
                     :
-                    <View>
-                        <Text>Hello</Text>
-                        {userData.name ? <Text>{userData.name}</Text> : null}
+                    <>
+                        <Text style={styles.headerText}>Welcome</Text>
+                        {userData.name ? <Text style={[styles.headerText, styles.nameText]}>{userData.name}</Text> : null}
                         {userData.data
                             ? <UserRecords />
                             :
                             <View>
-                                <Text>You have no records yet. Let's fix it!</Text>
-                                <TouchableOpacity>
-                                    <Text>Add first record</Text>
+                                <Text style={styles.introText}>You have no records yet. Let's fix it!</Text>
+                                <TouchableOpacity style={[styles.buttonContainer, styles.createRecord]}>
+                                    <Text style={styles.addFirstText}>Add first record</Text>
                                 </TouchableOpacity>
                             </View>
                         }
-                    </View>
+                    </>
             }
         </View>
     )
