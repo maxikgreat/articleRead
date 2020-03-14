@@ -1,9 +1,12 @@
 import React from 'react'
-import {Text} from 'react-native'
+import {View, Text} from 'react-native'
+import styles from '../../styles/components/UserRecords.component.styles'
 
 const UserRecords = () => {
     return(
-        <Text>Records</Text>
+        <View style = {styles.container}>
+            <Text>RECOREDS</Text>
+        </View>
     )
 }
 

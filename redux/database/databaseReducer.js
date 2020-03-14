@@ -1,4 +1,4 @@
-import {ERROR_FETCH, FETCH_DATA, HIDE_LOADER, SHOW_LOADER} from "../actionTypes";
+import {ERROR_FETCH, FETCH_DATA, SHOW_LOADER} from "../actionTypes";
 
 
 const initialState = {
@@ -13,10 +13,6 @@ export default function databaseReducer(state = initialState, {type, payload}){
         case SHOW_LOADER:
             return{
                 isLoading: true
-            }
-        case HIDE_LOADER:
-            return {
-                isLoading: false
             }
         case FETCH_DATA:
             return{
