@@ -30,7 +30,7 @@ export function fetchFromDatabase(){
 export function addRecord(){
     return async dispatch => {
         await firebase.database().ref('/' + firebase.auth().currentUser.uid).child("data").set(
-            "record1"
+            array
         ).catch((error) => {
             console.log(error.message)
         })
