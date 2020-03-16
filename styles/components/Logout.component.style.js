@@ -5,7 +5,7 @@ export default StyleSheet.create({
         height:45,
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop:20,
+        marginTop:50,
         width:300,
         borderRadius:30,
         backgroundColor:'transparent'
@@ -22,6 +22,7 @@ export default StyleSheet.create({
         elevation: 19,
     },
     logoutText: {
-        color: '#fff'
+        color: '#fff',
+        textTransform: 'uppercase',
     }
 })

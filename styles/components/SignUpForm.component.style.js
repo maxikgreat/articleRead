@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
     },
     loginText: {
         color: '#fff',
+        textTransform: 'uppercase',
     },
     togglerText:{
         color:"#cc0000",

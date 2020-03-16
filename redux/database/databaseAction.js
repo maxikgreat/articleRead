@@ -28,7 +28,7 @@ export function fetchFromDatabase(){
 }
 
 export function addRecord(){
-    return async dispatch => {
+    return async () => {
         await firebase.database().ref('/' + firebase.auth().currentUser.uid).child("data").set(
             array
         ).catch((error) => {
@@ -38,13 +38,22 @@ export function addRecord(){
 }
 
 export function changeUsername(name){
-    return async dispatch => {
+    return async () => {
         await firebase.database().ref('/' + firebase.auth().currentUser.uid).child('name').set(name)
-            .then((resp) => {
-                console.log(resp)
-            })
             .catch((error) => {
-                console.log(error)
+                console.log(error.message)
+            })
+    }
+}
+
+export function changePassword(password){
+    return async () => {
+        await firebase.auth().currentUser.updatePassword(password)
+            .then(() => {
+                console.log("Password updated");
+            })
+            .catch(error => {
+                console.log(error.message)
             })
     }
 }

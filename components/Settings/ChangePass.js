@@ -2,49 +2,51 @@ import React, {useState} from 'react'
 import styles from "../../styles/components/ChangeName.component.style";
 import {View, Text, TextInput, TouchableOpacity, Alert} from "react-native";
 import {useDispatch} from "react-redux";
-import {changeUsername} from "../../redux/database/databaseAction";
+import {changePassword, changeUsername} from "../../redux/database/databaseAction";
 
 
-const ChangeName = () => {
+const ChangePass = () => {
 
-    const [newName, setNewName] = useState("")
+    const [newPass, setNewPass] = useState("")
 
     const dispatch = useDispatch()
 
-    const changeNameHandler = () => {
-        if(!newName){
+    const changePassHandler = () => {
+        if(!newPass){
             Alert.alert(
                 'Error',
                 "Field can't be empty!",
             );
-        } else if (/^[0-9a-zA-Z_.-]+$/g.test(newName)){
-            dispatch(changeUsername(newName))
-            setNewName("")
+        } else if (!newPass.length < 6){
+            dispatch(changePassword(newPass))
+            setNewPass("")
         } else {
             Alert.alert(
                 'Error',
-                "Enter valid username!",
+                "Minimal length - 6 characters",
             );
         }
     }
 
     return(
         <>
-            <Text style={styles.titleChange}>Change your <Text style={styles.redText}>name</Text></Text>
+            <Text style={styles.titleChange}>Change your <Text style={styles.redText}>password</Text></Text>
             <View style={styles.containerChange}>
                 <View style={styles.inputContainer}>
                     <TextInput
+                        secureTextEntry={true}
                         style={styles.inputs}
-                        placeholder={"Your new username..."}
-                        autoCorrect={false}
-                        onChangeText = {(text) => setNewName(text)}
+                        placeholder={"Your new password..."}
+                        textContentType={"new-password"}
                         underlineColorAndroid='transparent'
+                        autoCorrect={false}
+                        onChangeText = {(text) => setNewPass(text)}
                     />
                 </View>
 
                 <TouchableOpacity
                     style = {[styles.buttonContainer, styles.changeButton]}
-                    onPress = {() => {changeNameHandler()}}
+                    onPress = {() => {changePassHandler()}}
                 >
                     <Text style={styles.nameText}>Set</Text>
                 </TouchableOpacity>
@@ -53,4 +55,4 @@ const ChangeName = () => {
     )
 }
 
-export default ChangeName
+export default ChangePass

@@ -1,6 +1,9 @@
 import {StyleSheet} from 'react-native'
 
 export default StyleSheet.create({
+    titleChange: {
+        fontSize: 20,
+    },
     containerChange:{
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -27,6 +30,7 @@ export default StyleSheet.create({
         elevation: 19,
     },
     nameText: {
+        textTransform: 'uppercase',
         color: '#fff'
     },
     inputContainer: {
@@ -52,5 +56,9 @@ export default StyleSheet.create({
         height:45,
         marginLeft:15,
         flex:1,
+    },
+    redText: {
+        color: '#cc0000',
+        fontWeight: 'bold'
     }
 })

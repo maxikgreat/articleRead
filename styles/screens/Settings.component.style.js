@@ -5,5 +5,10 @@ export default StyleSheet.create({
         flex:1,
         justifyContent: "center",
         alignItems: 'center'
+    },
+    subContainer: {
+        borderBottomWidth: 3,
+        borderColor: '#cc0000',
+        paddingBottom: 10
     }
 })

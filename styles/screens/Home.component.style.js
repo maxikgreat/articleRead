@@ -41,6 +41,7 @@ export default StyleSheet.create({
         elevation: 19,
     },
     addFirstText: {
+        textTransform: 'uppercase',
         color: '#fff'
     }
 })
