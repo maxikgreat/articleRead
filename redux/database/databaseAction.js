@@ -35,5 +35,16 @@ export function addRecord(){
             console.log(error.message)
         })
     }
+}
 
+export function changeUsername(name){
+    return async dispatch => {
+        await firebase.database().ref('/' + firebase.auth().currentUser.uid).child('name').set(name)
+            .then((resp) => {
+                console.log(resp)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
 }

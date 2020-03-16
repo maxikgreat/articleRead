@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchFromDatabase} from "../redux/database/databaseAction";
 import UserRecords from "../components/Home/UserRecords";
 import {addRecord} from "../redux/database/databaseAction";
-import ModalComp from "../styles/components/ModalComp";
+import ModalComp from "../components/ModalComp";
 
 
 const Home = () => {
@@ -37,7 +37,7 @@ const Home = () => {
                         {userData.data
                             ? <UserRecords />
                             :
-                            <View>
+                            <>
                                 <Text style={styles.introText}>You have no records yet. Let's fix it!</Text>
                                 <TouchableOpacity
                                     style={[styles.buttonContainer, styles.createRecord]}
@@ -45,7 +45,7 @@ const Home = () => {
                                 >
                                     <Text style={styles.addFirstText}>Add first record</Text>
                                 </TouchableOpacity>
-                            </View>
+                            </>
                         }
                     </>
             }

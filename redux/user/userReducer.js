@@ -1,7 +1,6 @@
 import {
     SUCCESS_LOG_IN,
     ERROR_LOG_IN,
-    SET_USERNAME,
     LOG_OUT,
     ERROR_SIGN_UP,
     CLEAR_ERROR,
@@ -31,11 +30,6 @@ export default function userReducer(state = initialState, {type, payload}){
                 ...state,
                 isLoading: false,
                 error: payload
-            }
-        case SET_USERNAME:
-            return{
-                ...state,
-                name: payload
             }
         case ERROR_SIGN_UP:
             return{

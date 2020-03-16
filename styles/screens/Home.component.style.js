@@ -16,6 +16,7 @@ export default StyleSheet.create({
         paddingBottom: 50
     },
     introText:{
+        fontWeight: 'bold',
         fontSize: 20,
         paddingBottom: 50
     },

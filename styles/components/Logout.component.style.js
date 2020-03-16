@@ -1,11 +1,6 @@
 import {StyleSheet} from 'react-native'
 
 export default StyleSheet.create({
-    container:{
-        flex:1,
-        justifyContent: "center",
-        alignItems: 'center'
-    },
     buttonContainer: {
         height:45,
         justifyContent: 'center',
@@ -20,7 +15,7 @@ export default StyleSheet.create({
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
-            height: 9,
+            height: 9
         },
         shadowOpacity: 0.50,
         shadowRadius: 12.35,
