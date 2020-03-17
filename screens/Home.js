@@ -35,7 +35,9 @@ const Home = () => {
                         <Text style={styles.headerText}>Welcome</Text>
                         {userData.name ? <Text style={[styles.headerText, styles.nameText]}>{userData.name}</Text> : null}
                         {userData.data
-                            ? <UserRecords />
+                            ? <UserRecords
+                                records = {userData.data}
+                            />
                             :
                             <>
                                 <Text style={styles.introText}>You have no records yet. Let's fix it!</Text>
@@ -56,6 +58,7 @@ const Home = () => {
                 />
                 : null
             }
+            {console.log(userData)}
         </View>
     )
 }

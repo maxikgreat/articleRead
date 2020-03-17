@@ -27,13 +27,21 @@ export function fetchFromDatabase(){
     }
 }
 
-export function addRecord(){
+export function addRecord(record, firstRec = false, prevData = []){
     return async () => {
-        await firebase.database().ref('/' + firebase.auth().currentUser.uid).child("data").set(
-            array
-        ).catch((error) => {
-            console.log(error.message)
-        })
+        if(firstRec){
+            await firebase.database().ref('/' + firebase.auth().currentUser.uid).child("data").set(
+                [record]
+            ).catch((error) => {
+                console.log(error.message)
+            })
+        } else{
+            await firebase.database().ref('/' + firebase.auth().currentUser.uid).child("data").set(
+                [...prevData, ...record]
+            ).catch((error) => {
+                console.log(error.message)
+            })
+        }
     }
 }
 

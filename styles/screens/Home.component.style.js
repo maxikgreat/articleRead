@@ -8,7 +8,7 @@ export default StyleSheet.create({
         padding: 20
     },
     headerText: {
-        fontSize: 50
+        fontSize: 40
     },
     nameText:{
         fontWeight: 'bold',

@@ -1,12 +1,17 @@
 import React, {useState} from 'react';
 import {Modal, Text, TouchableOpacity, View, TextInput, Alert} from 'react-native';
 import styles from '../styles/components/ModalComp.component.style'
-import {logOut} from "../redux/user/userAction";
+import {useDispatch, useSelector} from "react-redux";
+import {addRecord} from "../redux/database/databaseAction";
 
 
 const ModalComp = ({modalVisible, setVisible}) => {
 
     const [url, setUrl] = useState("")
+
+    const dispatch = useDispatch()
+
+    const userDatabase = useSelector(state => state.database)
 
     const checkUrl = () => {
         if(!url){
@@ -15,7 +20,8 @@ const ModalComp = ({modalVisible, setVisible}) => {
                 "Field can't be empty!",
             );
         } else if (/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/g.test(url)){
-
+            dispatch(addRecord(url, true, userDatabase.data))
+            setVisible(!modalVisible)
         } else {
             Alert.alert(
                 'Error',

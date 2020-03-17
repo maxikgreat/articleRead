@@ -3,7 +3,7 @@ import {SET_MESSAGE, FETCH_DATA, SHOW_LOADER, CLEAR_MESSAGE} from "../actionType
 
 const initialState = {
     name: "",
-    data: {},
+    data: [],
     message: "",
     isLoading: false
 }
