@@ -1,10 +1,10 @@
-import {ERROR_FETCH, FETCH_DATA, SHOW_LOADER} from "../actionTypes";
+import {SET_MESSAGE, FETCH_DATA, SHOW_LOADER, CLEAR_MESSAGE} from "../actionTypes";
 
 
 const initialState = {
     name: "",
-    data: null,
-    error: null,
+    data: {},
+    message: "",
     isLoading: false
 }
 
@@ -12,18 +12,26 @@ export default function databaseReducer(state = initialState, {type, payload}){
     switch (type) {
         case SHOW_LOADER:
             return{
+                ...state,
                 isLoading: true
             }
         case FETCH_DATA:
             return{
+                ...state,
                 isLoading: false,
                 name: payload.name,
-                data: payload.data
+                data: payload.data,
             }
-        case ERROR_FETCH:
+        case SET_MESSAGE:
             return{
+                ...state,
                 isLoading: false,
-                error: payload
+                message: payload
+            }
+        case CLEAR_MESSAGE:
+            return{
+                ...state,
+                message: "",
             }
         default:
             return state

@@ -1,11 +1,12 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import styles from "../../styles/components/ChangeName.component.style";
-import {View, Text, TextInput, TouchableOpacity, Alert} from "react-native";
+import {View, Text, TextInput, TouchableOpacity, Alert, Keyboard} from "react-native";
 import {useDispatch} from "react-redux";
-import {changePassword, changeUsername} from "../../redux/database/databaseAction";
+import {changePassword, clearMessage} from "../../redux/database/databaseAction";
 
 
-const ChangePass = () => {
+
+const ChangePass = ({message}) => {
 
     const [newPass, setNewPass] = useState("")
 
@@ -17,14 +18,15 @@ const ChangePass = () => {
                 'Error',
                 "Field can't be empty!",
             );
-        } else if (!newPass.length < 6){
-            dispatch(changePassword(newPass))
-            setNewPass("")
-        } else {
+        } else if (newPass.length < 6) {
             Alert.alert(
                 'Error',
                 "Minimal length - 6 characters",
             );
+        } else {
+            dispatch(changePassword(newPass))
+            setNewPass("")
+            Keyboard.dismiss()
         }
     }
 
@@ -37,8 +39,9 @@ const ChangePass = () => {
                         secureTextEntry={true}
                         style={styles.inputs}
                         placeholder={"Your new password..."}
-                        textContentType={"new-password"}
+                        textContentType={"newPassword"}
                         underlineColorAndroid='transparent'
+                        value={newPass}
                         autoCorrect={false}
                         onChangeText = {(text) => setNewPass(text)}
                     />
@@ -48,8 +51,23 @@ const ChangePass = () => {
                     style = {[styles.buttonContainer, styles.changeButton]}
                     onPress = {() => {changePassHandler()}}
                 >
+
                     <Text style={styles.nameText}>Set</Text>
                 </TouchableOpacity>
+                {message
+                    ?
+                    Alert.alert(
+                    'Alert!',
+                    `${message}`,
+                        [{
+                        onPress: () => {dispatch(clearMessage())},
+                            text: 'Cancel',
+                            style: 'cancel',
+                        }],
+                        { cancelable: false }
+                    )
+                    : null
+                }
             </View>
         </>
     )

@@ -1,7 +1,7 @@
 
 
 import firebase from '../../firebase'
-import {FETCH_DATA, ERROR_FETCH, SHOW_LOADER} from "../actionTypes";
+import {FETCH_DATA, SET_MESSAGE, SHOW_LOADER, CLEAR_MESSAGE} from "../actionTypes";
 
 export function fetchFromDatabase(){
     return async dispatch => {
@@ -19,7 +19,7 @@ export function fetchFromDatabase(){
         }
         catch(error){
             dispatch({
-                type: ERROR_FETCH,
+                type: SET_MESSAGE,
                 payload: error.message
             })
         }
@@ -38,22 +38,40 @@ export function addRecord(){
 }
 
 export function changeUsername(name){
-    return async () => {
+    return async dispatch => {
         await firebase.database().ref('/' + firebase.auth().currentUser.uid).child('name').set(name)
             .catch((error) => {
-                console.log(error.message)
+                dispatch({
+                    type: SET_MESSAGE,
+                    payload: error.message
+                })
             })
     }
 }
 
 export function changePassword(password){
-    return async () => {
-        await firebase.auth().currentUser.updatePassword(password)
-            .then(() => {
-                console.log("Password updated");
-            })
-            .catch(error => {
-                console.log(error.message)
-            })
+    return async dispatch => {
+        dispatch({
+            type: SHOW_LOADER
+        })
+            await firebase.auth().currentUser.updatePassword(password)
+                .then(() => {
+                    dispatch({
+                        type: SET_MESSAGE,
+                        payload: "Password updated"
+                    })
+                })
+                .catch((error) => {
+                    dispatch({
+                        type: SET_MESSAGE,
+                        payload: error.message
+                    })
+                })
+    }
+}
+
+export function clearMessage(){
+    return{
+        type: CLEAR_MESSAGE
     }
 }

@@ -52,6 +52,7 @@ export default function userReducer(state = initialState, {type, payload}){
             }
         case LOADING_END:
             return{
+                ...state,
                 isLoading: false
             }
         default:

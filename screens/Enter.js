@@ -9,7 +9,7 @@ import Splash from "./Splash";
 import styles from '../styles/screens/Enter.component.style'
 //redux
 import {useSelector, useDispatch} from "react-redux";
-import {autoLogin, clearError, logOut} from "../redux/user/userAction";
+import {autoLogin, clearError} from "../redux/user/userAction";
 
 const Enter = () => {
 

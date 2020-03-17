@@ -1,15 +1,33 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import styles from "../../styles/components/ChangeName.component.style";
-import {View, Text, TextInput, TouchableOpacity, Alert} from "react-native";
-import {useDispatch} from "react-redux";
-import {changeUsername} from "../../redux/database/databaseAction";
+import {View, Text, TextInput, TouchableOpacity, Alert, Keyboard} from "react-native";
+import {useDispatch, useSelector} from "react-redux";
+import {changeUsername, clearMessage} from "../../redux/database/databaseAction";
 
 
-const ChangeName = () => {
+const ChangeName = ({message}) => {
 
     const [newName, setNewName] = useState("")
 
     const dispatch = useDispatch()
+
+    //SYNC WITH ALL MESSAGES
+
+    // useEffect(() => {
+    //     if(message){
+    //         Alert.alert(
+    //             'Alert!',
+    //             `${message}`,
+    //             [{
+    //                 onPress: () => {dispatch(clearMessage())},
+    //                 text: 'Cancel',
+    //                 style: 'cancel',
+    //             }],
+    //             { cancelable: false }
+    //         )
+    //     }
+    //
+    // }, [message])
 
     const changeNameHandler = () => {
         if(!newName){
@@ -20,6 +38,11 @@ const ChangeName = () => {
         } else if (/^[0-9a-zA-Z_.-]+$/g.test(newName)){
             dispatch(changeUsername(newName))
             setNewName("")
+            Keyboard.dismiss()
+            Alert.alert(
+                'Alert',
+                "Username updated!",
+            );
         } else {
             Alert.alert(
                 'Error',
@@ -27,6 +50,7 @@ const ChangeName = () => {
             );
         }
     }
+
 
     return(
         <>
@@ -37,6 +61,7 @@ const ChangeName = () => {
                         style={styles.inputs}
                         placeholder={"Your new username..."}
                         autoCorrect={false}
+                        value={newName}
                         onChangeText = {(text) => setNewName(text)}
                         underlineColorAndroid='transparent'
                     />

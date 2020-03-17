@@ -15,5 +15,7 @@ export const LOADING_END = "LOADING_END"
 //-------------_DATABASE_------------------
 export const SHOW_LOADER = "SHOW_LOADER"
 export const FETCH_DATA = "FETCH_DATA"
-export const ERROR_FETCH = "ERROR_FETCH"
+//succ/err
+export const SET_MESSAGE = "SET_MESSAGE"
+export const CLEAR_MESSAGE = "CLEAR_MESSAGE"
 

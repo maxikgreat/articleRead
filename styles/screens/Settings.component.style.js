@@ -9,6 +9,7 @@ export default StyleSheet.create({
     subContainer: {
         borderBottomWidth: 3,
         borderColor: '#cc0000',
-        paddingBottom: 10
+        paddingBottom: 10,
+        marginBottom: 20
     }
 })

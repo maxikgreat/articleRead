@@ -13,7 +13,7 @@ export default StyleSheet.create({
         height:45,
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop:20,
+        marginTop:5,
         width:100,
         borderRadius:30,
         backgroundColor:'transparent'
@@ -40,7 +40,7 @@ export default StyleSheet.create({
         borderBottomWidth: 1,
         width: 190,
         height:45,
-        marginTop:20,
+        marginTop:5,
         flexDirection: 'row',
         alignItems:'center',
         shadowColor: "#000",
