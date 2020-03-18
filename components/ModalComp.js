@@ -10,8 +10,11 @@ const ModalComp = ({modalVisible, setVisible}) => {
 
     const tryAddRecord = () => {
         console.log("Added!")
-        //dispatch(addRecord(url, true, userDatabase.data))
-        //setVisible(false)
+        dispatch(addRecord({
+            title: values.bookName,
+            url: values.url
+        }))
+        setVisible(false)
     }
 
     const {

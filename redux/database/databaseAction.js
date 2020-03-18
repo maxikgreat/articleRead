@@ -23,25 +23,16 @@ export function fetchFromDatabase(){
                 payload: error.message
             })
         }
-
     }
 }
 
-export function addRecord(record, firstRec = false, prevData = []){
+export function addRecord(record){
     return async () => {
-        if(firstRec){
-            await firebase.database().ref('/' + firebase.auth().currentUser.uid).child("data").set(
-                [record]
-            ).catch((error) => {
-                console.log(error.message)
+            await firebase.database().ref('/' + firebase.auth().currentUser.uid)
+                .child("data").push().set(record)
+                    .catch((error) => {
+                        console.log(error.message)
             })
-        } else{
-            await firebase.database().ref('/' + firebase.auth().currentUser.uid).child("data").set(
-                [...prevData, ...record]
-            ).catch((error) => {
-                console.log(error.message)
-            })
-        }
     }
 }
 

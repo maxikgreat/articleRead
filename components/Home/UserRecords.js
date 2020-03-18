@@ -6,45 +6,29 @@ import {Ionicons} from '@expo/vector-icons'
 import Categories from "./Categories";
 
 
-const UserRecords = ({records}) => {
+const UserRecords = ({records, setVisibleModal}) => {
 
-    console.log(records)
+    // for ( let [key,value] of Object.entries(records)){
+    //     console.log(key + " - " + value)
+    // }
 
-    const DATA = [
-        {
-            id: 0,
-            title: 'First Item',
-        },
-        {
-            id: 1,
-            title: 'Second Item',
-        },
-        {
-            id: 2,
-            title: 'Third Item',
-        },
-        {
-            id: 3,
-            title: 'First Item',
-        },
-        {
-            id: 4,
-            title: 'Second Item',
-        },
-    ];
+    const changeToArray = (records) => {
+        return Object.values(records).map(item => item)
+    }
 
     return(
         <View style = {styles.container}>
             <Categories />
             <SafeAreaView style={styles.recordsContainer}>
                 <FlatList
-                    data={DATA}
+                    data={changeToArray(records)}
                     renderItem={({ item }) => <Record title={item.title} />}
                     keyExtractor={item => item.id}
                 />
             </SafeAreaView>
             <TouchableOpacity
                 style={styles.addItemButton}
+                onPress = {() => setVisibleModal(true)}
             >
                 <Ionicons name={'md-add-circle-outline'} size={50} color={'#cc0000'} />
                 <Text style={styles.addItemText}>Add record</Text>

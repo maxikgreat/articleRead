@@ -36,6 +36,7 @@ const Home = () => {
                         {userData.data
                             ? <UserRecords
                                 records = {userData.data}
+                                setVisibleModal = {setVisible}
                             />
                             :
                             <>
@@ -57,7 +58,6 @@ const Home = () => {
                 />
                 : null
             }
-            {console.log(userData)}
         </View>
     )
 }
