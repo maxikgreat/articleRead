@@ -1,34 +1,27 @@
-import React, {useState} from 'react';
-import {Modal, Text, TouchableOpacity, View, TextInput, Alert} from 'react-native';
+import React from 'react';
+import {Modal, Text, TouchableOpacity, View, TextInput} from 'react-native';
 import styles from '../styles/components/ModalComp.component.style'
 import {useDispatch, useSelector} from "react-redux";
 import {addRecord} from "../redux/database/databaseAction";
-
+import useForm from "../customHooks/useForm";
+import validationRules from "../helpFunctions/validationRules";
 
 const ModalComp = ({modalVisible, setVisible}) => {
 
-    const [url, setUrl] = useState("")
+    const tryAddRecord = () => {
+        console.log("Added!")
+        //dispatch(addRecord(url, true, userDatabase.data))
+        //setVisible(false)
+    }
+
+    const {
+        values,
+        errors,
+        handleChange,
+        handleSubmit
+    } = useForm(tryAddRecord, validationRules)
 
     const dispatch = useDispatch()
-
-    const userDatabase = useSelector(state => state.database)
-
-    const checkUrl = () => {
-        if(!url){
-            Alert.alert(
-                'Error',
-                "Field can't be empty!",
-            );
-        } else if (/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/g.test(url)){
-            dispatch(addRecord(url, true, userDatabase.data))
-            setVisible(!modalVisible)
-        } else {
-            Alert.alert(
-                'Error',
-                "Enter valid URL address!",
-            );
-        }
-    }
 
         return (
                 <Modal
@@ -37,17 +30,38 @@ const ModalComp = ({modalVisible, setVisible}) => {
                     visible={modalVisible}
                 >
                     <View style={styles.modalContainer}>
-                            <Text style={styles.titleText}>Add URL below:</Text>
+                            <Text style={styles.titleText}>Bookmark title</Text>
                             <View style={styles.inputContainer}>
                                 <TextInput
                                     style = {styles.inputs}
                                     placeholder = "www.example.pl/some-url"
                                     autoCorrect={false}
-                                    value={url}
-                                    onChangeText = {(text) => {setUrl(text)}}
+                                    value={values.bookName}
+                                    onChange={(nativeEvent) => handleChange(nativeEvent, "bookName")}
                                     underlineColorAndroid='transparent'
                                 />
                             </View>
+                            {
+                                errors.bookName
+                                ? <Text style={styles.errorMessage}>{errors.bookName}</Text>
+                                : null
+                            }
+                            <Text style={styles.titleText}>URL address</Text>
+                            <View style={styles.inputContainer}>
+                                <TextInput
+                                    style = {styles.inputs}
+                                    placeholder = "www.example.pl/some-url"
+                                    autoCorrect={false}
+                                    value={values.url}
+                                    onChange={(nativeEvent) => handleChange(nativeEvent, "url")}
+                                    underlineColorAndroid='transparent'
+                                />
+                            </View>
+                            {
+                                errors.url
+                                    ? <Text style={styles.errorMessage}>{errors.url}</Text>
+                                    : null
+                            }
                             <View style={styles.buttonsContainer}>
                                 <TouchableOpacity
                                     style={[styles.buttonContainer, styles.cancelButton]}
@@ -57,7 +71,7 @@ const ModalComp = ({modalVisible, setVisible}) => {
                                 </TouchableOpacity>
                                 <TouchableOpacity
                                     style={[styles.buttonContainer, styles.cancelButton]}
-                                    onPress={() => {checkUrl()}}
+                                    onPress={handleSubmit}
                                 >
                                     <Text style={styles.cancelText}>Add</Text>
                                 </TouchableOpacity>

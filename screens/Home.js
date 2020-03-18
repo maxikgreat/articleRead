@@ -4,7 +4,6 @@ import styles from "../styles/screens/Home.component.style";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchFromDatabase} from "../redux/database/databaseAction";
 import UserRecords from "../components/Home/UserRecords";
-import {addRecord} from "../redux/database/databaseAction";
 import ModalComp from "../components/ModalComp";
 
 

@@ -31,17 +31,16 @@ export default StyleSheet.create({
         color: '#fff'
     },
     titleText: {
-        fontSize: 40,
-        fontWeight: 'bold'
+        fontSize: 20,
+        fontWeight: 'bold',
+        paddingTop: 20
     },
     inputContainer: {
         borderBottomColor: '#000',
-        backgroundColor: '#000',
+        backgroundColor: '#fff',
         borderRadius:30,
-        borderBottomWidth: 1,
         width: 300,
         height:45,
-        marginTop:20,
         flexDirection: 'row',
         alignItems:'center',
         shadowColor: "#000",
@@ -57,9 +56,14 @@ export default StyleSheet.create({
         height:45,
         marginLeft:15,
         flex:1,
-        color: '#fff'
+        color: '#000'
     },
     buttonsContainer: {
         flexDirection: 'row'
+    },
+    errorMessage: {
+        paddingTop: 5,
+        fontSize: 15,
+        color: '#cc0000'
     }
 })
