@@ -12,12 +12,12 @@ export default StyleSheet.create({
     },
     nameText:{
         fontWeight: 'bold',
-        color: '#cc0000',
-        paddingBottom: 50
+        color: '#cc0000'
     },
     introText:{
         fontWeight: 'bold',
         fontSize: 20,
+        paddingTop: 50,
         paddingBottom: 50
     },
     buttonContainer: {

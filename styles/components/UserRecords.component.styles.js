@@ -7,14 +7,42 @@ export default StyleSheet.create({
         alignItems: 'center'
     },
     recordsContainer: {
-        borderWidth: 1,
-        borderColor: 'black',
-        width: 300
+        flex: 0.9,
     },
     recordHld: {
-        width: 200
+        minWidth: 300,
+        padding: 10,
+        margin: 10,
+        borderWidth: 1,
+        borderColor: "black",
+        justifyContent: 'space-between',
+        borderRadius: 30
     },
     recordTitle: {
-        fontSize: 30
+        fontSize: 20
+    },
+    addItemText: {
+        fontSize: 20,
+        marginLeft: 5,
+        textTransform: 'uppercase',
+        color: '#cc0000'
+    },
+    addItemButton: {
+        flex: 0.1,
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    categoriesContainer: {
+        height: 20,
+        width: 300,
+        justifyContent: 'flex-start'
+    },
+    categoryItem: {
+
+    },
+    activeCategory: {
+
     }
+
+
 })
