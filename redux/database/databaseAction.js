@@ -27,14 +27,58 @@ export function fetchFromDatabase(){
 }
 
 export function addRecord(record){
-    return async () => {
+    return async dispatch => {
             await firebase.database().ref('/' + firebase.auth().currentUser.uid)
                 .child("data").push().set(record)
                     .catch((error) => {
-                        console.log(error.message)
+                        dispatch({
+                            type: SET_MESSAGE,
+                            payload: error.message
+                        })
             })
     }
 }
+
+
+export function deleteRecord(id){
+    return async dispatch => {
+        await firebase.database().ref('/' + firebase.auth().currentUser.uid)
+            .child('data').child(id).set(null)
+                .catch(error => {
+                    dispatch({
+                        type: SET_MESSAGE,
+                        payload: error.message
+                    })
+                })
+    }
+}
+
+export function addCategory(category){
+    return async dispatch => {
+        await firebase.database().ref('/' + firebase.auth().currentUser.uid)
+            .child('categories').push().set(category)
+                .catch(error => {
+                    dispatch({
+                        type: SET_MESSAGE,
+                        payload: error.message
+                    })
+                })
+    }
+}
+
+export function deleteCategory(id){
+    return async dispatch => {
+        await firebase.database().ref('/' + firebase.auth().currentUser.uid)
+            .child('categories').child(id).set(null)
+                .catch(error => {
+                    dispatch({
+                        type: SET_MESSAGE,
+                        payload: error.message
+                    })
+                })
+    }
+}
+
 
 export function changeUsername(name){
     return async dispatch => {

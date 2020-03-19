@@ -37,7 +37,7 @@ const ModalComp = ({modalVisible, setVisible}) => {
                             <View style={styles.inputContainer}>
                                 <TextInput
                                     style = {styles.inputs}
-                                    placeholder = "www.example.pl/some-url"
+                                    placeholder = "Title"
                                     autoCorrect={false}
                                     value={values.bookName}
                                     onChange={(nativeEvent) => handleChange(nativeEvent, "bookName")}

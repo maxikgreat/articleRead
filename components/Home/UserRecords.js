@@ -6,7 +6,7 @@ import {Ionicons} from '@expo/vector-icons'
 import Categories from "./Categories";
 
 
-const UserRecords = ({records, setVisibleModal}) => {
+const UserRecords = ({records, categories, setVisibleModal}) => {
 
     const changeToArray = (records) => {
 
@@ -23,7 +23,7 @@ const UserRecords = ({records, setVisibleModal}) => {
 
     return(
         <View style = {styles.container}>
-            <Categories />
+            <Categories categories = {categories}/>
             <SafeAreaView style={styles.recordsContainer}>
                 <FlatList
                     data={changeToArray(records)}

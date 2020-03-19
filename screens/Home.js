@@ -1,8 +1,8 @@
-import {Text, View, ActivityIndicator, TouchableOpacity, Modal} from "react-native";
+import {Text, View, ActivityIndicator, TouchableOpacity, Alert} from "react-native";
 import React, {useEffect, useState} from 'react';
 import styles from "../styles/screens/Home.component.style";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchFromDatabase} from "../redux/database/databaseAction";
+import {clearMessage, fetchFromDatabase} from "../redux/database/databaseAction";
 import UserRecords from "../components/Home/UserRecords";
 import ModalComp from "../components/ModalComp";
 
@@ -36,6 +36,7 @@ const Home = () => {
                         {userData.data
                             ? <UserRecords
                                 records = {userData.data}
+                                categories = {userData.categories}
                                 setVisibleModal = {setVisible}
                             />
                             :
@@ -56,6 +57,20 @@ const Home = () => {
                     modalVisible = {modalVisible}
                     setVisible = {setVisible}
                 />
+                : null
+            }
+            {userData.message
+                ?
+                Alert.alert(
+                    'Alert!',
+                    `${userData.message}`,
+                    [{
+                        onPress: () => {dispatch(clearMessage())},
+                        text: 'Cancel',
+                        style: 'cancel',
+                    }],
+                    { cancelable: false }
+                )
                 : null
             }
         </View>

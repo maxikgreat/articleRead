@@ -35,10 +35,17 @@ export default StyleSheet.create({
     categoriesContainer: {
         height: 20,
         width: 300,
-        justifyContent: 'flex-start'
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        flexDirection: 'row',
+        padding: 5,
+        margin: 5
     },
     categoryItem: {
-
+        paddingRight: 10,
+    },
+    categoryItemText: {
+        fontSize: 18
     },
     activeCategory: {
 

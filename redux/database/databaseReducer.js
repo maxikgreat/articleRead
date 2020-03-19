@@ -4,6 +4,8 @@ import {SET_MESSAGE, FETCH_DATA, SHOW_LOADER, CLEAR_MESSAGE} from "../actionType
 const initialState = {
     name: "",
     data: [],
+    categories: [],
+    activeCategory: "",
     message: "",
     isLoading: false
 }
@@ -21,6 +23,7 @@ export default function databaseReducer(state = initialState, {type, payload}){
                 isLoading: false,
                 name: payload.name,
                 data: payload.data,
+                categories: payload.categories
             }
         case SET_MESSAGE:
             return{
