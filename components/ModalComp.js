@@ -4,7 +4,7 @@ import styles from '../styles/components/ModalComp.component.style'
 import {useDispatch, useSelector} from "react-redux";
 import {addRecord} from "../redux/database/databaseAction";
 import useForm from "../customHooks/useForm";
-import validationRules from "../helpFunctions/validationRules";
+import validationBookmark from "../helpFunctions/validation/validationBookmark";
 
 const ModalComp = ({modalVisible, setVisible}) => {
 
@@ -22,7 +22,7 @@ const ModalComp = ({modalVisible, setVisible}) => {
         errors,
         handleChange,
         handleSubmit
-    } = useForm(tryAddRecord, validationRules)
+    } = useForm(tryAddRecord, validationBookmark)
 
     const dispatch = useDispatch()
 

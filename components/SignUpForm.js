@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import styles from '../styles/components/SignUpForm.component.style'
 import {Ionicons} from "@expo/vector-icons";
-import validationRules from "../helpFunctions/validationRules";
+import validationSignInUp from "../helpFunctions/validation/validationSignInUp";
 import {useDispatch} from "react-redux";
 import {signUp} from "../redux/user/userAction";
 
@@ -25,7 +25,7 @@ const SignUpForm = ({toggleForm}) => {
         errors,
         handleChange,
         handleSubmit
-    } = useForm(trySignUp, validationRules)
+    } = useForm(trySignUp, validationSignInUp)
 
         return (
             <View style={styles.container}>

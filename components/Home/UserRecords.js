@@ -8,11 +8,14 @@ import Categories from "./Categories";
 
 const UserRecords = ({records, setVisibleModal}) => {
 
-    // for ( let [key,value] of Object.entries(records)){
-    //     console.log(key + " - " + value)
-    // }
-
     const changeToArray = (records) => {
+        const array = Object.entries(records).map(item => {
+            item.map(tItem => {
+                console.log(tItem)
+            })
+        })
+
+
         return Object.values(records).map(item => item)
     }
 

@@ -9,7 +9,7 @@ import {
 import styles from '../styles/components/SignUpForm.component.style'
 import {Ionicons} from "@expo/vector-icons";
 import {useDispatch} from "react-redux";
-import validationRules from "../helpFunctions/validationRules";
+import validationSignInUp from "../helpFunctions/validation/validationSignInUp";
 import {logIn} from "../redux/user/userAction";
 
 const LogInForm = ({toggleForm}) => {
@@ -25,7 +25,7 @@ const LogInForm = ({toggleForm}) => {
         errors,
         handleChange,
         handleSubmit
-    } = useForm(tryLogIn, validationRules)
+    } = useForm(tryLogIn, validationSignInUp)
 
     return (
         <View style={styles.container}>
