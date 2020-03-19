@@ -9,14 +9,16 @@ import Categories from "./Categories";
 const UserRecords = ({records, setVisibleModal}) => {
 
     const changeToArray = (records) => {
-        const array = Object.entries(records).map(item => {
-            item.map(tItem => {
-                console.log(tItem)
-            })
+
+        const arr = [];
+
+        Object.entries(records).map(keyItem => {
+            keyItem[1].id = keyItem[0]
+            arr.push(keyItem[1])
         })
 
+        return arr
 
-        return Object.values(records).map(item => item)
     }
 
     return(
@@ -25,8 +27,16 @@ const UserRecords = ({records, setVisibleModal}) => {
             <SafeAreaView style={styles.recordsContainer}>
                 <FlatList
                     data={changeToArray(records)}
-                    renderItem={({ item }) => <Record title={item.title} />}
-                    keyExtractor={item => item.id}
+                    renderItem={({item}) => {
+                        return (
+                            <Record
+                                title = {item.title}
+                                url = {item.url}
+                                id = {item.id}
+                            />
+                        )
+                    }}
+                    keyExtractor={(item) => item.id}
                 />
             </SafeAreaView>
             <TouchableOpacity
