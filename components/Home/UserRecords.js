@@ -4,22 +4,10 @@ import Record from './Record'
 import styles from '../../styles/components/UserRecords.component.styles'
 import {Ionicons} from '@expo/vector-icons'
 import Categories from "./Categories";
+import objToArray from "../../helpFunctions/objToArray";
 
 
 const UserRecords = ({records, categories, modalVisible, setVisibleModal}) => {
-
-    const changeToArray = (records) => {
-
-        const arr = [];
-
-        Object.entries(records).map(keyItem => {
-            keyItem[1].id = keyItem[0]
-            arr.push(keyItem[1])
-        })
-
-        return arr
-
-    }
 
     return(
         <View style = {styles.container}>
@@ -30,7 +18,7 @@ const UserRecords = ({records, categories, modalVisible, setVisibleModal}) => {
             />
             <SafeAreaView style={styles.recordsContainer}>
                 <FlatList
-                    data={changeToArray(records)}
+                    data={objToArray(records)}
                     renderItem={({item}) => {
                         return (
                             <Record

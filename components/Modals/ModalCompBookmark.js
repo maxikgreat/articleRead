@@ -1,12 +1,12 @@
 import React from 'react';
-import {Modal, Text, TouchableOpacity, View, TextInput} from 'react-native';
+import {Modal, Text, TouchableOpacity, View, TextInput, Picker} from 'react-native';
 import styles from '../../styles/components/ModalComp.component.style'
 import {useDispatch} from "react-redux";
 import {addRecord} from "../../redux/database/databaseAction";
 import useForm from "../../customHooks/useForm";
 import validationBookmark from "../../helpFunctions/validation/validationBookmark";
 
-const ModalCompBookmark = ({modalVisible, setVisible}) => {
+const ModalCompBookmark = ({categories, modalVisible, setVisible}) => {
 
     const tryAddRecord = () => {
         dispatch(addRecord({
@@ -22,6 +22,7 @@ const ModalCompBookmark = ({modalVisible, setVisible}) => {
         handleChange,
         handleSubmit
     } = useForm(tryAddRecord, validationBookmark)
+
 
     const dispatch = useDispatch()
 
@@ -79,6 +80,17 @@ const ModalCompBookmark = ({modalVisible, setVisible}) => {
                                         <Text style={styles.cancelText}>Add</Text>
                                     </TouchableOpacity>
                                 </View>
+                                {
+                                    // categories
+                                    // ? <Picker
+                                    //         selectedValue={categories}
+                                    //         style={{ height: 50, width: 100 }}
+                                    //         onValueChange={(itemValue, itemIndex) => this.setState({ language: itemValue })}>
+                                    //         <Picker.Item label="Java" value="java" />
+                                    //         <Picker.Item label="JavaScript" value="js" />
+                                    //     </Picker>
+                                    //     : null
+                                }
                     </View>
                 </Modal>
         );

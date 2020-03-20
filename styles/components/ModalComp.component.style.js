@@ -65,5 +65,8 @@ export default StyleSheet.create({
         paddingTop: 5,
         fontSize: 15,
         color: '#cc0000'
+    },
+    pickerContainer: {
+
     }
 })

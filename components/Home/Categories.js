@@ -3,9 +3,10 @@ import {View, Text, TouchableOpacity, FlatList, SafeAreaView} from 'react-native
 import styles from '../../styles/components/UserRecords.component.styles'
 import {Ionicons} from "@expo/vector-icons";
 import {useDispatch} from 'react-redux'
-import {addCategory, deleteCategory} from "../../redux/database/databaseAction";
+import {deleteCategory} from "../../redux/database/databaseAction";
 import { useActionSheet } from '@expo/react-native-action-sheet'
 import ModalCompCategory from "../Modals/ModalCompCategory";
+import objToArray from "../../helpFunctions/objToArray";
 
 const Categories = ({categories}) => {
 
@@ -32,19 +33,6 @@ const Categories = ({categories}) => {
         )
     }
 
-    const objToArray = (categories) => {
-
-        const arr = []
-
-        if(categories){
-            Object.entries(categories).map(item => {
-                item[1].id = item[0]
-                arr.push(item[1])
-            })
-        }
-        return arr
-
-    }
 
     return(
         <View style={styles.categoriesContainer}>

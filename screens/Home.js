@@ -55,6 +55,7 @@ const Home = () => {
             }
             {modalVisible
                 ? <ModalCompBookmark
+                    categories = {userData.categories}
                     modalVisible = {modalVisible}
                     setVisible = {setVisible}
                 />
