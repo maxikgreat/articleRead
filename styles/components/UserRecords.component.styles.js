@@ -7,7 +7,7 @@ export default StyleSheet.create({
         alignItems: 'center'
     },
     recordsContainer: {
-        flex: 0.9,
+        flex: 0.8,
     },
     recordHld: {
         minWidth: 300,
@@ -33,13 +33,15 @@ export default StyleSheet.create({
         alignItems: 'center'
     },
     categoriesContainer: {
+        flex: 0.1,
         height: 20,
         width: 300,
         justifyContent: 'flex-start',
         alignItems: 'center',
         flexDirection: 'row',
-        padding: 5,
-        margin: 5
+    },
+    restCategories: {
+        height: 20,
     },
     categoryItem: {
         paddingRight: 10,

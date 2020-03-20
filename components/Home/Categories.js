@@ -3,18 +3,18 @@ import {View, Text, TouchableOpacity, FlatList, SafeAreaView} from 'react-native
 import styles from '../../styles/components/UserRecords.component.styles'
 import {Ionicons} from "@expo/vector-icons";
 import {useDispatch} from 'react-redux'
-import {addCategory, deleteCategory, deleteRecord} from "../../redux/database/databaseAction";
+import {addCategory, deleteCategory} from "../../redux/database/databaseAction";
 import { useActionSheet } from '@expo/react-native-action-sheet'
+import ModalCompCategory from "../Modals/ModalCompCategory";
 
 const Categories = ({categories}) => {
 
     const { showActionSheetWithOptions } = useActionSheet();
 
+    const [modalVisible, setVisible] = useState(false)
+
     const dispatch = useDispatch()
 
-    const addCategoryHandle = () => {
-        dispatch(addCategory({name: "Cat1"}))
-    }
 
     const longPressOptions = (id) => {
 
@@ -26,7 +26,6 @@ const Categories = ({categories}) => {
             },
             (buttonIndex) => {
                 if(buttonIndex === 1){
-                    console.log("Delete this - " + id)
                     dispatch(deleteCategory(id))
                 }
             },
@@ -48,13 +47,12 @@ const Categories = ({categories}) => {
     }
 
     return(
-
         <View style={styles.categoriesContainer}>
             <TouchableOpacity
                 style={styles.categoryItem}
-                onPress = {() => {addCategoryHandle()}}
+                onPress = {() => {setVisible(true)}}
             >
-                <Ionicons name={'md-add-circle-outline'} size={20} color={'#cc0000'} />
+                <Ionicons name={'md-add-circle-outline'} size={25} color={'#cc0000'} />
             </TouchableOpacity>
 
             <TouchableOpacity
@@ -62,8 +60,7 @@ const Categories = ({categories}) => {
             >
                 <Text style={styles.categoryItemText}>All</Text>
             </TouchableOpacity>
-
-            <SafeAreaView style={styles.recordsContainer}>
+            <SafeAreaView style={styles.restCategories}>
                 <FlatList
                     data={objToArray(categories)}
                     horizontal={true}
@@ -80,6 +77,14 @@ const Categories = ({categories}) => {
                     keyExtractor={(item) => item.id}
                 />
             </SafeAreaView>
+            {
+                modalVisible
+                    ? <ModalCompCategory
+                        modalVisible={modalVisible}
+                        setVisible={setVisible}
+                    />
+                    : null
+            }
         </View>
     )
 }

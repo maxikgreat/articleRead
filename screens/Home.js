@@ -4,7 +4,7 @@ import styles from "../styles/screens/Home.component.style";
 import {useDispatch, useSelector} from "react-redux";
 import {clearMessage, fetchFromDatabase} from "../redux/database/databaseAction";
 import UserRecords from "../components/Home/UserRecords";
-import ModalComp from "../components/ModalComp";
+import ModalCompBookmark from "../components/Modals/ModalCompBookmark";
 
 
 const Home = () => {
@@ -37,6 +37,7 @@ const Home = () => {
                             ? <UserRecords
                                 records = {userData.data}
                                 categories = {userData.categories}
+                                modalVisible = {modalVisible}
                                 setVisibleModal = {setVisible}
                             />
                             :
@@ -53,7 +54,7 @@ const Home = () => {
                     </>
             }
             {modalVisible
-                ? <ModalComp
+                ? <ModalCompBookmark
                     modalVisible = {modalVisible}
                     setVisible = {setVisible}
                 />
