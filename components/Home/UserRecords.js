@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {View, Text, FlatList, SafeAreaView, TouchableOpacity} from 'react-native'
 import Record from './Record'
 import styles from '../../styles/components/UserRecords.component.styles'
@@ -7,7 +7,21 @@ import Categories from "./Categories";
 import objToArray from "../../helpFunctions/objToArray";
 
 
-const UserRecords = ({records, categories, activeCategory, modalVisible, setVisibleModal}) => {
+const UserRecords = ({records, categories, activeCategory, setVisibleModal}) => {
+
+    const filterRecords = () => {
+        if(activeCategory){
+            if(activeCategory.id !== 0){
+                return objToArray(records).filter(item => {
+                    if(item.type){
+                        return item.type.id === activeCategory.id
+                    }
+                })
+            }else {
+                return objToArray(records)
+            }
+        }
+    }
 
     return(
         <View style = {styles.container}>
@@ -16,20 +30,24 @@ const UserRecords = ({records, categories, activeCategory, modalVisible, setVisi
                 activeCategory = {activeCategory}
             />
             <SafeAreaView style={styles.recordsContainer}>
-                <FlatList
-                    data={objToArray(records)}
-                    renderItem={({item}) => {
-                        return (
-                            <Record
-                                title = {item.title}
-                                url = {item.url}
-                                id = {item.id}
-                                type = {item.type}
-                            />
-                        )
-                    }}
-                    keyExtractor={(item) => item.id}
-                />
+                {filterRecords().length !== 0
+                    ? <FlatList
+                        data={filterRecords()}
+                        renderItem={({item}) => {
+                            return (
+                                <Record
+                                    title = {item.title}
+                                    url = {item.url}
+                                    id = {item.id}
+                                    type = {item.type}
+                                />
+                            )
+                        }}
+                        keyExtractor={(item) => item.id}
+                    />
+                    : <Text style={styles.noRecordsText}>No records in this category</Text>
+                }
+
             </SafeAreaView>
             <TouchableOpacity
                 style={styles.addItemButton}

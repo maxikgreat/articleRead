@@ -40,14 +40,14 @@ export default StyleSheet.create({
     },
     categoriesContainer: {
         flex: 0.1,
-        height: 20,
+        height: 40,
         width: 300,
         justifyContent: 'flex-start',
         alignItems: 'center',
         flexDirection: 'row',
     },
     restCategories: {
-        height: 20,
+        marginTop: 2
     },
     categoryItem: {
         padding: 10,
@@ -64,6 +64,10 @@ export default StyleSheet.create({
     activeCategoryText: {
         fontSize: 18,
         color: '#fff'
+    },
+    noRecordsText: {
+        marginTop: 20,
+        fontSize: 20
     }
 
 
