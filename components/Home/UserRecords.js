@@ -7,14 +7,13 @@ import Categories from "./Categories";
 import objToArray from "../../helpFunctions/objToArray";
 
 
-const UserRecords = ({records, categories, modalVisible, setVisibleModal}) => {
+const UserRecords = ({records, categories, activeCategory, modalVisible, setVisibleModal}) => {
 
     return(
         <View style = {styles.container}>
             <Categories
-                modalVisible = {modalVisible}
-                setVisibleModal = {setVisibleModal}
                 categories = {objToArray(categories)}
+                activeCategory = {activeCategory}
             />
             <SafeAreaView style={styles.recordsContainer}>
                 <FlatList

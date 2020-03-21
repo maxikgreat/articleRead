@@ -1,7 +1,7 @@
 
 
 import firebase from '../../firebase'
-import {FETCH_DATA, SET_MESSAGE, SHOW_LOADER, CLEAR_MESSAGE} from "../actionTypes";
+import {FETCH_DATA, SET_MESSAGE, SHOW_LOADER, CLEAR_MESSAGE, SET_CATEGORY} from "../actionTypes";
 
 export function fetchFromDatabase(){
     return async dispatch => {
@@ -57,6 +57,19 @@ export function addCategory(category){
     return async dispatch => {
         await firebase.database().ref('/' + firebase.auth().currentUser.uid)
             .child('categories').push().set(category)
+                .catch(error => {
+                    dispatch({
+                        type: SET_MESSAGE,
+                        payload: error.message
+                    })
+                })
+    }
+}
+
+export function setActiveCategory(category){
+    return async dispatch => {
+        await firebase.database().ref( '/' + firebase.auth().currentUser.uid)
+            .child("activeCategory").set(category)
                 .catch(error => {
                     dispatch({
                         type: SET_MESSAGE,

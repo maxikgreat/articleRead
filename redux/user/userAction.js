@@ -31,7 +31,11 @@ export function signUp(email, password, username = ""){
         await firebase.auth().createUserWithEmailAndPassword(email, password)
             .then((user) => {
                 firebase.database().ref("/" + user.user.uid).set({
-                    name: username
+                    name: username,
+                    activeCategory: {
+                        id: 0,
+                        name: "All"
+                    }
                 })
             })
             .catch((error) => {

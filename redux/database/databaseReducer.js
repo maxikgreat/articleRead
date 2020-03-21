@@ -5,7 +5,7 @@ const initialState = {
     name: "",
     data: [],
     categories: [],
-    activeCategory: "",
+    activeCategory: null,
     message: "",
     isLoading: false
 }
@@ -23,7 +23,8 @@ export default function databaseReducer(state = initialState, {type, payload}){
                 isLoading: false,
                 name: payload.name,
                 data: payload.data,
-                categories: payload.categories
+                categories: payload.categories,
+                activeCategory: payload.activeCategory
             }
         case SET_MESSAGE:
             return{

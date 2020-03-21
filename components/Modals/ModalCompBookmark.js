@@ -30,8 +30,6 @@ const ModalCompBookmark = ({categories, modalVisible, setVisible}) => {
 
     const dispatch = useDispatch()
 
-
-
         return (
                 <Modal
                     animationType="slide"

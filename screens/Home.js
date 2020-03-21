@@ -38,6 +38,7 @@ const Home = () => {
                             ? <UserRecords
                                 records = {userData.data}
                                 categories = {userData.categories}
+                                activeCategory = {userData.activeCategory}
                                 modalVisible = {modalVisible}
                                 setVisibleModal = {setVisible}
                             />

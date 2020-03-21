@@ -50,13 +50,20 @@ export default StyleSheet.create({
         height: 20,
     },
     categoryItem: {
-        paddingRight: 10,
+        padding: 10,
     },
     categoryItemText: {
-        fontSize: 18
+        fontSize: 18,
+        color: '#000'
     },
     activeCategory: {
-
+        padding: 10,
+        backgroundColor: '#cc0000',
+        borderRadius: 10,
+    },
+    activeCategoryText: {
+        fontSize: 18,
+        color: '#fff'
     }
 
 
