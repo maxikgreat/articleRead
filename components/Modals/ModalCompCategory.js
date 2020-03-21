@@ -7,17 +7,19 @@ import {addCategory} from "../../redux/database/databaseAction";
 //note: validation inside component
 
 
-const ModalCompCategory = ({modalVisible, setVisible}) => {
+const ModalCompCategory = ({modalVisible, setVisible, categories}) => {
 
     const tryAddCategory = () => {
-        if(category){
-            setError("")
+        if(!category){
+            setError("Field is required!")
+
+        } else if (categories.some(item => item.name === category)){
+            setError("Try to add already existing category!")
+        } else {
             dispatch(addCategory({
                 name: category
             }))
             setVisible(false)
-        } else {
-            setError("Field is required!")
         }
     }
 

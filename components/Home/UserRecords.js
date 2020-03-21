@@ -14,7 +14,7 @@ const UserRecords = ({records, categories, modalVisible, setVisibleModal}) => {
             <Categories
                 modalVisible = {modalVisible}
                 setVisibleModal = {setVisibleModal}
-                categories = {categories}
+                categories = {objToArray(categories)}
             />
             <SafeAreaView style={styles.recordsContainer}>
                 <FlatList

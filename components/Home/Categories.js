@@ -6,7 +6,6 @@ import {useDispatch} from 'react-redux'
 import {deleteCategory} from "../../redux/database/databaseAction";
 import { useActionSheet } from '@expo/react-native-action-sheet'
 import ModalCompCategory from "../Modals/ModalCompCategory";
-import objToArray from "../../helpFunctions/objToArray";
 
 const Categories = ({categories}) => {
 
@@ -15,7 +14,6 @@ const Categories = ({categories}) => {
     const [modalVisible, setVisible] = useState(false)
 
     const dispatch = useDispatch()
-
 
     const longPressOptions = (id) => {
 
@@ -50,7 +48,7 @@ const Categories = ({categories}) => {
             </TouchableOpacity>
             <SafeAreaView style={styles.restCategories}>
                 <FlatList
-                    data={objToArray(categories)}
+                    data={categories}
                     horizontal={true}
                     renderItem = {({item}) => {
                         return(
@@ -70,6 +68,7 @@ const Categories = ({categories}) => {
                     ? <ModalCompCategory
                         modalVisible={modalVisible}
                         setVisible={setVisible}
+                        categories = {categories}
                     />
                     : null
             }
