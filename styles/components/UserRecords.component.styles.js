@@ -15,11 +15,17 @@ export default StyleSheet.create({
         margin: 10,
         borderWidth: 1,
         borderColor: "black",
+        flexDirection: "row",
         justifyContent: 'space-between',
+        alignItems: 'center',
         borderRadius: 30
     },
     recordTitle: {
         fontSize: 20
+    },
+    recordType: {
+        fontSize: 14,
+        color: '#cc0000'
     },
     addItemText: {
         fontSize: 20,

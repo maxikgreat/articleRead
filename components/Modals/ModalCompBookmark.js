@@ -1,5 +1,5 @@
-import React from 'react';
-import {Modal, Text, TouchableOpacity, View, TextInput, Picker} from 'react-native';
+import React, {useState} from 'react';
+import {Modal, Picker, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import styles from '../../styles/components/ModalComp.component.style'
 import {useDispatch} from "react-redux";
 import {addRecord} from "../../redux/database/databaseAction";
@@ -8,10 +8,13 @@ import validationBookmark from "../../helpFunctions/validation/validationBookmar
 
 const ModalCompBookmark = ({categories, modalVisible, setVisible}) => {
 
+    const [currentCatId, setCategoryId] = useState(null)
+
     const tryAddRecord = () => {
         dispatch(addRecord({
             title: values.bookName,
-            url: values.url
+            url: values.url,
+            type: categories.find(item => item.id === currentCatId)
         }))
         setVisible(false)
     }
@@ -24,7 +27,10 @@ const ModalCompBookmark = ({categories, modalVisible, setVisible}) => {
     } = useForm(tryAddRecord, validationBookmark)
 
 
+
     const dispatch = useDispatch()
+
+
 
         return (
                 <Modal
@@ -33,7 +39,7 @@ const ModalCompBookmark = ({categories, modalVisible, setVisible}) => {
                     visible={modalVisible}
                 >
                     <View style={styles.modalContainer}>
-                             <Text>Category</Text>
+                        <View>
                                 <Text style={styles.titleText}>Bookmark title</Text>
                                 <View style={styles.inputContainer}>
                                     <TextInput
@@ -61,36 +67,56 @@ const ModalCompBookmark = ({categories, modalVisible, setVisible}) => {
                                         underlineColorAndroid='transparent'
                                     />
                                 </View>
-                                {
-                                    errors.url
-                                        ? <Text style={styles.errorMessage}>{errors.url}</Text>
-                                        : null
-                                }
-                                <View style={styles.buttonsContainer}>
-                                    <TouchableOpacity
-                                        style={[styles.buttonContainer, styles.cancelButton]}
-                                        onPress={() => {setVisible(!modalVisible)}}
+
+                        {
+                            errors.url
+                                ? <Text style={styles.errorMessage}>{errors.url}</Text>
+                                : null
+                        }
+                        </View>
+                        {
+                            categories
+                                ?
+                                <View>
+                                    <Picker
+                                        selectedValue={currentCatId}
+                                        style={styles.pickerContainer}
+                                        onValueChange={(item) => {
+                                                setCategoryId(item)
+                                            }
+                                        }
                                     >
-                                        <Text style={styles.cancelText}>Cancel</Text>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity
-                                        style={[styles.buttonContainer, styles.cancelButton]}
-                                        onPress={handleSubmit}
+                                        <Picker.Item label={"None"} value={""}/>
+                                        {
+                                            categories.map(item => {
+                                                return <Picker.Item
+                                                    label={item.name}
+                                                    value={item.id}
+                                                    key={item.id.toString()}
+                                                />
+                                            })
+                                        }
+                                    </Picker>
+                                </View>
+                                : null
+                        }
+                        <View style={styles.buttonsContainer}>
+                            <TouchableOpacity
+                                style={[styles.buttonContainer, styles.cancelButton]}
+                                onPress={() => {
+                                    setVisible(!modalVisible)
+                                }}
+                            >
+                                <Text style={styles.cancelText}>Cancel</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={[styles.buttonContainer, styles.cancelButton]}
+                                onPress={handleSubmit}
                                     >
                                         <Text style={styles.cancelText}>Add</Text>
                                     </TouchableOpacity>
                                 </View>
-                                {
-                                    // categories
-                                    // ? <Picker
-                                    //         selectedValue={categories}
-                                    //         style={{ height: 50, width: 100 }}
-                                    //         onValueChange={(itemValue, itemIndex) => this.setState({ language: itemValue })}>
-                                    //         <Picker.Item label="Java" value="java" />
-                                    //         <Picker.Item label="JavaScript" value="js" />
-                                    //     </Picker>
-                                    //     : null
-                                }
+
                     </View>
                 </Modal>
         );

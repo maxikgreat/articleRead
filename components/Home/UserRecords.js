@@ -25,6 +25,7 @@ const UserRecords = ({records, categories, modalVisible, setVisibleModal}) => {
                                 title = {item.title}
                                 url = {item.url}
                                 id = {item.id}
+                                type = {item.type}
                             />
                         )
                     }}

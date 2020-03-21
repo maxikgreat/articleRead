@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native'
 export default StyleSheet.create({
     modalContainer:{
         flex:1,
-        justifyContent: "center",
+        justifyContent: "space-around",
         alignItems: 'center'
     },
     buttonContainer: {
@@ -67,6 +67,10 @@ export default StyleSheet.create({
         color: '#cc0000'
     },
     pickerContainer: {
-
+        width: 300,
+        height: 50,
+        borderColor: 'black',
+        justifyContent: 'center',
+        paddingBottom: 30
     }
 })

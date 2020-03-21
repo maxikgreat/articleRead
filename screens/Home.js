@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {clearMessage, fetchFromDatabase} from "../redux/database/databaseAction";
 import UserRecords from "../components/Home/UserRecords";
 import ModalCompBookmark from "../components/Modals/ModalCompBookmark";
+import objToArray from "../helpFunctions/objToArray";
 
 
 const Home = () => {
@@ -55,7 +56,7 @@ const Home = () => {
             }
             {modalVisible
                 ? <ModalCompBookmark
-                    categories = {userData.categories}
+                    categories = {objToArray(userData.categories)}
                     modalVisible = {modalVisible}
                     setVisible = {setVisible}
                 />
