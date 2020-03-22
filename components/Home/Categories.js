@@ -3,12 +3,11 @@ import {View, Text, TouchableOpacity, FlatList, SafeAreaView, ActivityIndicator}
 import styles from '../../styles/components/UserRecords.component.styles'
 import {Ionicons} from "@expo/vector-icons";
 import {useDispatch} from 'react-redux'
-import {deleteCategory} from "../../redux/database/databaseAction";
 import { useActionSheet } from '@expo/react-native-action-sheet'
-import {setActiveCategory} from "../../redux/database/databaseAction";
+import {deleteCategory, setActiveCategory, updateRecordsDeleteUnUseCat} from "../../redux/database/databaseAction";
 import ModalCompCategory from "../Modals/ModalCompCategory";
 
-const Categories = ({categories, activeCategory}) => {
+const Categories = ({categories, activeCategory, records}) => {
 
     const { showActionSheetWithOptions } = useActionSheet();
 
@@ -27,6 +26,12 @@ const Categories = ({categories, activeCategory}) => {
             (buttonIndex) => {
                 if(buttonIndex === 1){
                     dispatch(deleteCategory(id))
+                    const recordsToUpdate = records.filter(item => {
+                        if(item.type){
+                            return item.type.id === activeCategory.id
+                        }
+                    })
+                    dispatch(updateRecordsDeleteUnUseCat(recordsToUpdate))
                 }
             },
         )

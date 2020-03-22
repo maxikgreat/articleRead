@@ -5,7 +5,7 @@ export default function validationBookmark(values){
     if(!values.bookName){
         errors.bookName = 'Field is required!';
     } else if (!/^[0-9a-zA-Z_.-]+$/g.test(values.bookName)) {
-        errors.bookName = "Enter valid username!";
+        errors.bookName = "Enter valid bookmark name!";
     }
     //----------------------URL-------------------------
     if(!values.url){

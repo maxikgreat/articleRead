@@ -1,10 +1,11 @@
-import React, {useEffect} from 'react'
+import React, {useState} from 'react'
 import {View, Text, FlatList, SafeAreaView, TouchableOpacity} from 'react-native'
 import Record from './Record'
 import styles from '../../styles/components/UserRecords.component.styles'
 import {Ionicons} from '@expo/vector-icons'
 import Categories from "./Categories";
 import objToArray from "../../helpFunctions/objToArray";
+import ModalCompSetCat from "../Modals/ModalCompSetCat";
 
 
 const UserRecords = ({records, categories, activeCategory, setVisibleModal}) => {
@@ -28,9 +29,10 @@ const UserRecords = ({records, categories, activeCategory, setVisibleModal}) => 
             <Categories
                 categories = {objToArray(categories)}
                 activeCategory = {activeCategory}
+                records = {objToArray(records)}
             />
             <SafeAreaView style={styles.recordsContainer}>
-                {filterRecords().length !== 0
+                {filterRecords() ? filterRecords().length !== 0
                     ? <FlatList
                         data={filterRecords()}
                         renderItem={({item}) => {
@@ -40,12 +42,14 @@ const UserRecords = ({records, categories, activeCategory, setVisibleModal}) => 
                                     url = {item.url}
                                     id = {item.id}
                                     type = {item.type}
+                                    categories = {objToArray(categories)}
                                 />
                             )
                         }}
                         keyExtractor={(item) => item.id}
                     />
                     : <Text style={styles.noRecordsText}>No records in this category</Text>
+                    : null
                 }
 
             </SafeAreaView>
@@ -56,6 +60,7 @@ const UserRecords = ({records, categories, activeCategory, setVisibleModal}) => 
                 <Ionicons name={'md-add-circle-outline'} size={50} color={'#cc0000'} />
                 <Text style={styles.addItemText}>Add record</Text>
             </TouchableOpacity>
+
         </View>
     )
 }

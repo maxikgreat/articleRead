@@ -1,7 +1,7 @@
 
 
 import firebase from '../../firebase'
-import {FETCH_DATA, SET_MESSAGE, SHOW_LOADER, CLEAR_MESSAGE, SET_CATEGORY} from "../actionTypes";
+import {FETCH_DATA, SET_MESSAGE, SHOW_LOADER, CLEAR_MESSAGE} from "../actionTypes";
 
 export function fetchFromDatabase(){
     return async dispatch => {
@@ -39,6 +39,33 @@ export function addRecord(record){
     }
 }
 
+export function updateRecordsDeleteUnUseCat(records){
+    return dispatch => {
+            records.forEach(async item => {
+                await firebase.database().ref('/' + firebase.auth().currentUser.uid)
+                    .child("data").child(item.id).child("type").set(null)
+                        .catch(error => {
+                            dispatch({
+                                type: SET_MESSAGE,
+                                payload: error.message
+                            })
+                        })
+            })
+    }
+}
+
+export function updateRecordSetCategory(recordId, category){
+    return async dispatch => {
+        await firebase.database().ref('/' + firebase.auth().currentUser.uid)
+            .child('data').child(recordId).child('type').set(category)
+                .catch(error => {
+                    dispatch({
+                        type: SET_MESSAGE,
+                        payload: error.message
+                    })
+                })
+    }
+}
 
 export function deleteRecord(id){
     return async dispatch => {

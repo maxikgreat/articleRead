@@ -8,13 +8,13 @@ import validationBookmark from "../../helpFunctions/validation/validationBookmar
 
 const ModalCompBookmark = ({categories, modalVisible, setVisible}) => {
 
-    const [currentCatId, setCategoryId] = useState(null)
+    const [currentCat, setCategory] = useState(null)
 
     const tryAddRecord = () => {
         dispatch(addRecord({
             title: values.bookName,
             url: values.url,
-            type: currentCatId ? categories.find(item => item.id === currentCatId) : null
+            type: currentCat ? categories.find(item => item.id === currentCat) : null
         }))
         setVisible(false)
     }
@@ -77,10 +77,10 @@ const ModalCompBookmark = ({categories, modalVisible, setVisible}) => {
                                 ?
                                 <View>
                                     <Picker
-                                        selectedValue={currentCatId}
+                                        selectedValue={currentCat}
                                         style={styles.pickerContainer}
                                         onValueChange={(item) => {
-                                                setCategoryId(item)
+                                                setCategory(item)
                                             }
                                         }
                                     >
