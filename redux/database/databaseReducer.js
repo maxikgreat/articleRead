@@ -6,6 +6,7 @@ const initialState = {
     data: [],
     categories: [],
     activeCategory: null,
+    mailBox: {},
     message: "",
     isLoading: false
 }

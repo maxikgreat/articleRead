@@ -14,8 +14,6 @@ export default StyleSheet.create({
         width: '100%',
         justifyContent: 'space-between',
         alignItems: 'center',
-        borderBottomWidth: 3,
-        borderBottomColor: '#cc0000'
     },
     headerText: {
         fontSize: 30
