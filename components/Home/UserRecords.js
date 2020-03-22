@@ -1,11 +1,9 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {View, Text, FlatList, SafeAreaView, TouchableOpacity} from 'react-native'
 import Record from './Record'
 import styles from '../../styles/components/UserRecords.component.styles'
 import {Ionicons} from '@expo/vector-icons'
 import Categories from "./Categories";
-import objToArray from "../../helpFunctions/objToArray";
-import ModalCompSetCat from "../Modals/ModalCompSetCat";
 
 
 const UserRecords = ({records, categories, activeCategory, setVisibleModal}) => {
@@ -13,13 +11,13 @@ const UserRecords = ({records, categories, activeCategory, setVisibleModal}) => 
     const filterRecords = () => {
         if(activeCategory){
             if(activeCategory.id !== 0){
-                return objToArray(records).filter(item => {
+                return records.filter(item => {
                     if(item.type){
                         return item.type.id === activeCategory.id
                     }
                 })
             }else {
-                return objToArray(records)
+                return records
             }
         }
     }
@@ -27,9 +25,9 @@ const UserRecords = ({records, categories, activeCategory, setVisibleModal}) => 
     return(
         <View style = {styles.container}>
             <Categories
-                categories = {objToArray(categories)}
+                categories = {categories}
                 activeCategory = {activeCategory}
-                records = {objToArray(records)}
+                records = {records}
             />
             <SafeAreaView style={styles.recordsContainer}>
                 {filterRecords() ? filterRecords().length !== 0
@@ -42,7 +40,7 @@ const UserRecords = ({records, categories, activeCategory, setVisibleModal}) => 
                                     url = {item.url}
                                     id = {item.id}
                                     type = {item.type}
-                                    categories = {objToArray(categories)}
+                                    categories = {categories}
                                 />
                             )
                         }}

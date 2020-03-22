@@ -36,8 +36,8 @@ const Home = () => {
                         {userData.name ? <Text style={[styles.headerText, styles.nameText]}>{userData.name}</Text> : null}
                         {userData.data
                             ? <UserRecords
-                                records = {userData.data}
-                                categories = {userData.categories}
+                                records = {objToArray(userData.data)}
+                                categories = {objToArray(userData.categories)}
                                 activeCategory = {userData.activeCategory}
                                 modalVisible = {modalVisible}
                                 setVisibleModal = {setVisible}
