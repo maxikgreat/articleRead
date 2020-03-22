@@ -13,6 +13,7 @@
     "@react-native-community/masked-view": "^0.1.5",
     "@react-navigation/bottom-tabs": "^5.1.1",
     "@react-navigation/native": "^5.0.9",
+    "@react-navigation/stack": "^5.2.3",
     "expo": "~36.0.0",
     "firebase": "^7.10.0",
     "react": "~16.9.0",

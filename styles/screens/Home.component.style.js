@@ -7,8 +7,18 @@ export default StyleSheet.create({
         alignItems: 'center',
         padding: 20
     },
+    headerContainer: {
+        marginTop: 15,
+        marginBottom: 15,
+        flexDirection: 'row',
+        width: '100%',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        borderBottomWidth: 3,
+        borderBottomColor: '#cc0000'
+    },
     headerText: {
-        fontSize: 40
+        fontSize: 30
     },
     nameText:{
         fontWeight: 'bold',

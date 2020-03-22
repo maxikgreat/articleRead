@@ -71,6 +71,6 @@ export default StyleSheet.create({
         height: 50,
         borderColor: 'black',
         justifyContent: 'center',
-        paddingBottom: 30
+        paddingBottom: 30,
     }
 })

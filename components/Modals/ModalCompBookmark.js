@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
-import {Modal, Picker, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {Modal, Picker, Text, TextInput, TouchableOpacity, View, ImageBackground} from 'react-native';
 import styles from '../../styles/components/ModalComp.component.style'
 import {useDispatch} from "react-redux";
 import {addRecord} from "../../redux/database/databaseAction";
 import useForm from "../../customHooks/useForm";
 import validationBookmark from "../../helpFunctions/validation/validationBookmark";
+import bgModals from '../../assets/images/bgModals.jpg'
 
 const ModalCompBookmark = ({categories, modalVisible, setVisible}) => {
 
@@ -31,11 +32,13 @@ const ModalCompBookmark = ({categories, modalVisible, setVisible}) => {
     const dispatch = useDispatch()
 
         return (
+
                 <Modal
                     animationType="slide"
                     transparent={false}
                     visible={modalVisible}
                 >
+                    <ImageBackground source={bgModals} style={{width: '100%', height: '100%'}}>
                     <View style={styles.modalContainer}>
                         <View>
                                 <Text style={styles.titleText}>Bookmark title</Text>
@@ -116,7 +119,9 @@ const ModalCompBookmark = ({categories, modalVisible, setVisible}) => {
                                 </View>
 
                     </View>
+                    </ImageBackground>
                 </Modal>
+
         );
 }
 

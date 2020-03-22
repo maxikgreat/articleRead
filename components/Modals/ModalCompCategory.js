@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-import {Modal, Text, TouchableOpacity, View, TextInput} from 'react-native';
+import {Modal, Text, TouchableOpacity, View, TextInput, ImageBackground} from 'react-native';
 import styles from '../../styles/components/ModalComp.component.style'
 import {useDispatch} from "react-redux";
 import {addCategory} from "../../redux/database/databaseAction";
+import bgModals from '../../assets/images/bgModals.jpg'
 
 //note: validation inside component
 
@@ -34,6 +35,7 @@ const ModalCompCategory = ({modalVisible, setVisible, categories}) => {
             transparent={false}
             visible={modalVisible}
         >
+            <ImageBackground source={bgModals} style={{width: '100%', height: '100%'}}>
             <View style={styles.modalContainer}>
 
                         <Text style={styles.titleText}>Category name</Text>
@@ -68,6 +70,7 @@ const ModalCompCategory = ({modalVisible, setVisible, categories}) => {
                         </View>
 
             </View>
+            </ImageBackground>
         </Modal>
     );
 }

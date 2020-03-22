@@ -3,6 +3,7 @@
 import firebase from '../../firebase'
 import {FETCH_DATA, SET_MESSAGE, SHOW_LOADER, CLEAR_MESSAGE} from "../actionTypes";
 
+
 export function fetchFromDatabase(){
     return async dispatch => {
         dispatch({

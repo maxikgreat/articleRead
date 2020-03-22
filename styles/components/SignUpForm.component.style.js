@@ -67,15 +67,16 @@ const styles = StyleSheet.create({
         textTransform: 'uppercase',
     },
     togglerText:{
-        color:"#cc0000",
+        color:"#fff",
         fontWeight:'bold',
         fontSize: 15,
     },
     message:{
+        color:"#fff",
         marginTop: 5
     },
     errorMessage:{
-        color: '#cc0000',
+        color: '#fff',
         marginTop: 5
     }
 
