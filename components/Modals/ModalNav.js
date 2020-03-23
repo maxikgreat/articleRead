@@ -1,20 +1,28 @@
 import React, {useState} from 'react'
-import {View, Text, TouchableOpacity, ImageBackground, TextInput, Picker} from 'react-native'
+import {View, Text, TouchableOpacity, ImageBackground, TextInput, Picker, Alert} from 'react-native'
+import {useSelector, useDispatch} from "react-redux";
 import styles from '../../styles/components/ModalNav.component.style'
 import bgModals from '../../assets/images/bgModals.jpg'
+import {findUserByEmail} from '../../redux/database/databaseAction'
+import objToArray from "../../helpFunctions/objToArray";
+import {clearError} from "../../redux/user/userAction";
 
 const ModalNav = ({navigation}) => {
 
-    const [receiver, setReceiver] = useState({value: null, error: null})
+    const userData = useSelector(state => state.database)
+    const dispatch = useDispatch()
+
+    const [receiver, setReceiver] = useState({email: null, error: null})
 
     const trySendRecord = () => {
-        if(!receiver.value){
+        if(!receiver.email){
             setReceiver({
                 ...receiver,
                 error: "This field is required!"
             })
         } else {
             setReceiver({...receiver, error: null})
+            dispatch(findUserByEmail(receiver.email))
         }
     }
 
@@ -32,10 +40,10 @@ const ModalNav = ({navigation}) => {
                             placeholder = "Email"
                             autoCorrect={false}
                             keyboardType="email-address"
-                            value={receiver.value}
+                            value={receiver.email}
                             onChangeText={(text) => setReceiver({
                                 ...receiver,
-                                value: text
+                                email: text
                             })}
                             underlineColorAndroid='transparent'
                         />
@@ -44,9 +52,9 @@ const ModalNav = ({navigation}) => {
                     {/*<Picker*/}
                     {/*    selectedValue={currentCat}*/}
                     {/*    style={styles.pickerContainer}*/}
-                    {/*    onValueChange={(item) => {*/}
-                    {/*        setCategory(item)*/}
-                    {/*    }*/}
+                    {/*        onValueChange={(item) => {*/}
+                    {/*            setCategory(item)*/}
+                    {/*        }*/}
                     {/*    }*/}
                     {/*>*/}
                     {/*    <Picker.Item label={"None"} value={""}/>*/}

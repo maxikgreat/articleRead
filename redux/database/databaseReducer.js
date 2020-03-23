@@ -3,6 +3,7 @@ import {SET_MESSAGE, FETCH_DATA, SHOW_LOADER, CLEAR_MESSAGE} from "../actionType
 
 const initialState = {
     name: "",
+    email: "",
     data: [],
     categories: [],
     activeCategory: null,
@@ -23,6 +24,7 @@ export default function databaseReducer(state = initialState, {type, payload}){
                 ...state,
                 isLoading: false,
                 name: payload.name,
+                email: payload.email,
                 data: payload.data,
                 categories: payload.categories,
                 activeCategory: payload.activeCategory

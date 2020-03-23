@@ -120,6 +120,24 @@ export function deleteCategory(id){
     }
 }
 
+export function findUserByEmail(email){
+    return async dispatch => {
+        await firebase.database().ref('/')
+            .once("value", snapshot => {
+                const allEmails = Object.values(snapshot.val()).map(item => {
+                    return item.email
+                })
+                if(!allEmails.find(item => email === item)) {
+                    dispatch({
+                        type: SET_MESSAGE,
+                        payload: "No email address founded!"
+                    })
+                }
+            })
+    }
+}
+
+
 
 export function changeUsername(name){
     return async dispatch => {

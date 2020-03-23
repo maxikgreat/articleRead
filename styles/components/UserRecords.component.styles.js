@@ -48,7 +48,7 @@ export default StyleSheet.create({
         flexDirection: 'row',
     },
     restCategories: {
-        marginTop: 2
+        marginTop: 5
     },
     categoryItem: {
         padding: 10,

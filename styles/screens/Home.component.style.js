@@ -25,8 +25,9 @@ export default StyleSheet.create({
     introText:{
         fontWeight: 'bold',
         fontSize: 20,
-        paddingTop: 50,
-        paddingBottom: 50
+        marginTop: 50,
+        marginBottom: 50,
+        backgroundColor: '#fff',
     },
     buttonContainer: {
         height:45,
