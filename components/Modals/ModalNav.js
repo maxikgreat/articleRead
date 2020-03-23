@@ -1,18 +1,41 @@
-import React, {useState} from 'react'
-import {View, Text, TouchableOpacity, ImageBackground, TextInput, Picker, Alert} from 'react-native'
+import React, {useState, useEffect} from 'react'
+import {View, Text, TouchableOpacity, ImageBackground, TextInput, Picker} from 'react-native'
 import {useSelector, useDispatch} from "react-redux";
 import styles from '../../styles/components/ModalNav.component.style'
 import bgModals from '../../assets/images/bgModals.jpg'
-import {findUserByEmail} from '../../redux/database/databaseAction'
+import {findUserByEmail, sendRecord} from '../../redux/database/databaseAction'
 import objToArray from "../../helpFunctions/objToArray";
-import {clearError} from "../../redux/user/userAction";
 
-const ModalNav = ({navigation}) => {
+const ModalNav = ({route, navigation}) => {
 
     const userData = useSelector(state => state.database)
+
     const dispatch = useDispatch()
 
-    const [receiver, setReceiver] = useState({email: null, error: null})
+    const [receiver, setReceiver] = useState({
+        email: null,
+        bookmark: objToArray(userData.data)[0].id, // first record default
+        error: null
+    })
+
+    useEffect(() => {
+        if(route.params){
+            setReceiver({
+                ...receiver,
+                bookmark: route.params.recordId
+            })
+        }
+        if(userData.readyToSend){
+            dispatch(sendRecord(
+                receiver.email,
+                receiver.bookmark
+                    ? objToArray(userData.data).find(item => item.id === receiver.bookmark)
+                    : null
+            ))
+            navigation.goBack()
+        }
+    }, [userData.readyToSend])
+
 
     const trySendRecord = () => {
         if(!receiver.email){
@@ -49,25 +72,27 @@ const ModalNav = ({navigation}) => {
                         />
                         {receiver.error ? <Text style={styles.errorText}>{receiver.error}</Text> : null}
                     </View>
-                    {/*<Picker*/}
-                    {/*    selectedValue={currentCat}*/}
-                    {/*    style={styles.pickerContainer}*/}
-                    {/*        onValueChange={(item) => {*/}
-                    {/*            setCategory(item)*/}
-                    {/*        }*/}
-                    {/*    }*/}
-                    {/*>*/}
-                    {/*    <Picker.Item label={"None"} value={""}/>*/}
-                    {/*    {*/}
-                    {/*        categories.map(item => {*/}
-                    {/*            return <Picker.Item*/}
-                    {/*                label={item.name}*/}
-                    {/*                value={item.id}*/}
-                    {/*                key={item.id.toString()}*/}
-                    {/*            />*/}
-                    {/*        })*/}
-                    {/*    }*/}
-                    {/*</Picker>*/}
+                    <Picker
+                        selectedValue={receiver.bookmark}
+                        style={styles.pickerContainer}
+                            onValueChange={(item) => {
+                                setReceiver({
+                                    ...receiver,
+                                    bookmark: item
+                                })
+                            }
+                        }
+                    >
+                        {
+                            objToArray(userData.data).map(item => {
+                                return <Picker.Item
+                                    label={item.title}
+                                    value={item.id}
+                                    key={item.id.toString()}
+                                />
+                            })
+                        }
+                    </Picker>
                 </View>
                 <View style={styles.modalButtons}>
                         <TouchableOpacity

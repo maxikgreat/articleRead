@@ -46,6 +46,13 @@ export default StyleSheet.create({
         marginTop: 5,
         color: '#cc0000'
     },
+    pickerContainer: {
+        width: 300,
+        height: 50,
+        borderColor: 'black',
+        justifyContent: 'center',
+        marginTop: 60
+    },
     modalButtons: {
         flex: 0.2,
         flexDirection: 'row',

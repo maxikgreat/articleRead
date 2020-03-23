@@ -1,7 +1,7 @@
 
-
+import objToArray from "../../helpFunctions/objToArray";
 import firebase from '../../firebase'
-import {FETCH_DATA, SET_MESSAGE, SHOW_LOADER, CLEAR_MESSAGE} from "../actionTypes";
+import {FETCH_DATA, SET_MESSAGE, SHOW_LOADER, CLEAR_MESSAGE, READY_TO_SEND} from "../actionTypes";
 
 
 export function fetchFromDatabase(){
@@ -68,6 +68,40 @@ export function updateRecordSetCategory(recordId, category){
     }
 }
 
+export function sendRecord(email, record){
+    return async dispatch => {
+        await firebase.database().ref('/')
+            .once("value", snapshot => {
+                const allUsers = objToArray(snapshot.val()).map(item => {
+                    return item
+                })
+                const {id} = allUsers.find(item => item.email === email)
+                        firebase.database().ref('/' + id).child("mailBox").push()
+                            .set({
+                                from: firebase.auth().currentUser.email,
+                                record: {
+                                    name: record.title,
+                                    url: record.url
+                                }
+                            })
+                            .catch(error => {
+                                dispatch({
+                                    type: SET_MESSAGE,
+                                    payload: error.message
+                                })
+                            })
+                dispatch({
+                    type: READY_TO_SEND,
+                    payload: false
+                })
+                dispatch({
+                    type: SET_MESSAGE,
+                    payload: "Your bookmark was sent!"
+                })
+            })
+    }
+}
+
 export function deleteRecord(id){
     return async dispatch => {
         await firebase.database().ref('/' + firebase.auth().currentUser.uid)
@@ -127,7 +161,12 @@ export function findUserByEmail(email){
                 const allEmails = Object.values(snapshot.val()).map(item => {
                     return item.email
                 })
-                if(!allEmails.find(item => email === item)) {
+                if(allEmails.find(item => email === item)) {
+                    dispatch({
+                        type: READY_TO_SEND,
+                        payload: true
+                    })
+                } else {
                     dispatch({
                         type: SET_MESSAGE,
                         payload: "No email address founded!"

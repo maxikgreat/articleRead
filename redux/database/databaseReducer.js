@@ -1,4 +1,4 @@
-import {SET_MESSAGE, FETCH_DATA, SHOW_LOADER, CLEAR_MESSAGE} from "../actionTypes";
+import {SET_MESSAGE, FETCH_DATA, SHOW_LOADER, CLEAR_MESSAGE, READY_TO_SEND} from "../actionTypes";
 
 
 const initialState = {
@@ -8,6 +8,7 @@ const initialState = {
     categories: [],
     activeCategory: null,
     mailBox: {},
+    readyToSend: false,
     message: "",
     isLoading: false
 }
@@ -26,8 +27,14 @@ export default function databaseReducer(state = initialState, {type, payload}){
                 name: payload.name,
                 email: payload.email,
                 data: payload.data,
+                mailBox: payload.mailBox,
                 categories: payload.categories,
                 activeCategory: payload.activeCategory
+            }
+        case READY_TO_SEND:
+            return{
+                ...state,
+                readyToSend: payload
             }
         case SET_MESSAGE:
             return{

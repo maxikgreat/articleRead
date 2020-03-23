@@ -18,5 +18,7 @@ export const FETCH_DATA = "FETCH_DATA"
 //succ/err
 export const SET_MESSAGE = "SET_MESSAGE"
 export const CLEAR_MESSAGE = "CLEAR_MESSAGE"
+//mails
+export const READY_TO_SEND = "READY_TO_SEND"
 
 
