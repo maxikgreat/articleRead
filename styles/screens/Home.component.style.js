@@ -52,5 +52,17 @@ export default StyleSheet.create({
     addFirstText: {
         textTransform: 'uppercase',
         color: '#fff'
+    },
+    countMessage: {
+        position: 'absolute',
+        backgroundColor: '#fff',
+        padding: 3,
+        borderRadius: 50,
+        left: 20,
+        top: -10
+    },
+    countText: {
+        color: '#cc0000',
+        fontWeight: 'bold'
     }
 })

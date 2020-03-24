@@ -154,6 +154,19 @@ export function deleteCategory(id){
     }
 }
 
+export function deleteMessage(id){
+    return async dispatch => {
+        await firebase.database().ref('/' + firebase.auth().currentUser.uid)
+            .child('mailBox').child(id).set(null)
+            .catch(error => {
+                dispatch({
+                    type: SET_MESSAGE,
+                    payload: error.message
+                })
+            })
+    }
+}
+
 export function findUserByEmail(email){
     return async dispatch => {
         await firebase.database().ref('/')

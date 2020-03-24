@@ -50,6 +50,9 @@ const Main = ({navigation}) => {
                                         onPress = {() => {navigation.navigate("MailBox")}}
                                     >
                                         <Ionicons name={'md-mail'} size={30} color={'#cc0000'} />
+                                        <View style={styles.countMessage}>
+                                            <Text style={styles.countText}>{objToArray(userData.mailBox).length}</Text>
+                                        </View>
                                     </TouchableOpacity>
                                 </View>
                             </View>

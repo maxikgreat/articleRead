@@ -28,6 +28,7 @@ const MailBox = ({navigation}) => {
                                         title = {item.record.name}
                                         url = {item.record.url}
                                         from ={item.from}
+                                        id = {item.id}
                                     />
                                 )
                             }}
@@ -39,7 +40,7 @@ const MailBox = ({navigation}) => {
                     style = {styles.sendIcon}
                     onPress = {() => {navigation.navigate("ModalNav")}}
                 >
-                    <Ionicons name="md-add-circle-outline" size={70} color={"#cc0000"} />
+                    <Ionicons name="md-add-circle" size={70} color={"#cc0000"} />
                 </TouchableOpacity>
             </SafeAreaView>
         </View>

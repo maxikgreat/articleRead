@@ -3,9 +3,10 @@ import {StyleSheet} from 'react-native'
 export default StyleSheet.create({
     container: {
         flex: 1,
+        padding: 10
     },
     headerContainer: {
-        flex: 0.2,
+        flex: 0.15,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -13,9 +14,10 @@ export default StyleSheet.create({
         fontSize: 30,
     },
     messagesContainer: {
-        flex: 0.8,
-        alignItems: 'center',
-        paddingBottom: 100
+        flex: 0.85,
+        alignItems: 'flex-start',
+        paddingBottom: 100,
+        flexDirection: 'row'
     },
     noMessText: {
       fontSize: 20
@@ -33,7 +35,6 @@ export default StyleSheet.create({
         borderBottomColor: '#cc0000'
     },
     messageHld: {
-        width: 300,
         padding: 10,
         borderWidth: 1,
         borderColor: "black",

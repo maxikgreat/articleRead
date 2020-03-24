@@ -8,9 +8,10 @@ export default StyleSheet.create({
     },
     recordsContainer: {
         flex: 0.8,
+        flexDirection: 'row',
+
     },
     recordHld: {
-        minWidth: 300,
         padding: 10,
         margin: 10,
         borderWidth: 1,
