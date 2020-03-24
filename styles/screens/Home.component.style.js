@@ -3,13 +3,12 @@ import {StyleSheet} from 'react-native'
 export default StyleSheet.create({
     container:{
         flex:1,
-        justifyContent: "center",
-        alignItems: 'center',
-        padding: 20
+        padding: 10,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     headerContainer: {
-        marginTop: 15,
-        marginBottom: 15,
+        flex: 0.1,
         flexDirection: 'row',
         width: '100%',
         justifyContent: 'space-between',
@@ -64,5 +63,10 @@ export default StyleSheet.create({
     countText: {
         color: '#cc0000',
         fontWeight: 'bold'
+    },
+    //----------------MAIN CONTENT----------------
+    mainContainer: {
+        flex: 0.9,
+        width: '100%',
     }
 })

@@ -56,25 +56,27 @@ const Main = ({navigation}) => {
                                     </TouchableOpacity>
                                 </View>
                             </View>
-                            {userData.data
-                                ? <UserRecords
-                                    records = {objToArray(userData.data)}
-                                    categories = {objToArray(userData.categories)}
-                                    activeCategory = {userData.activeCategory}
-                                    modalVisible = {modalVisible}
-                                    setVisibleModal = {setVisible}
-                                />
-                                :
-                                <>
-                                    <Text style={styles.introText}>You have no records yet. Let's fix it!</Text>
-                                    <TouchableOpacity
-                                        style={[styles.buttonContainer, styles.createRecord]}
-                                        onPress={() => {showModal()}}
-                                    >
-                                        <Text style={styles.addFirstText}>Add first record</Text>
-                                    </TouchableOpacity>
-                                </>
-                            }
+                            <View style={styles.mainContainer}>
+                                {userData.data
+                                    ? <UserRecords
+                                        records = {objToArray(userData.data)}
+                                        categories = {objToArray(userData.categories)}
+                                        activeCategory = {userData.activeCategory}
+                                        modalVisible = {modalVisible}
+                                        setVisibleModal = {setVisible}
+                                    />
+                                    :
+                                    <>
+                                        <Text style={styles.introText}>You have no records yet. Let's fix it!</Text>
+                                        <TouchableOpacity
+                                            style={[styles.buttonContainer, styles.createRecord]}
+                                            onPress={() => {showModal()}}
+                                        >
+                                            <Text style={styles.addFirstText}>Add first record</Text>
+                                        </TouchableOpacity>
+                                    </>
+                                }
+                            </View>
                         </>
                 }
                 {modalVisible

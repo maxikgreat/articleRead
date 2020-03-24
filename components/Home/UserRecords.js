@@ -23,7 +23,7 @@ const UserRecords = ({records, categories, activeCategory, setVisibleModal}) => 
     }
 
     return(
-        <View style = {styles.container}>
+        <>
             <Categories
                 categories = {categories}
                 activeCategory = {activeCategory}
@@ -58,8 +58,7 @@ const UserRecords = ({records, categories, activeCategory, setVisibleModal}) => 
                 <Ionicons name={'md-add-circle-outline'} size={50} color={'#cc0000'} />
                 <Text style={styles.addItemText}>Add record</Text>
             </TouchableOpacity>
-
-        </View>
+        </>
     )
 }
 

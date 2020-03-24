@@ -1,15 +1,9 @@
 import {StyleSheet} from 'react-native'
 
 export default StyleSheet.create({
-    container:{
-        flex:1,
-        justifyContent: "flex-start",
-        alignItems: 'center'
-    },
     recordsContainer: {
         flex: 0.8,
         flexDirection: 'row',
-
     },
     recordHld: {
         padding: 10,
@@ -38,12 +32,11 @@ export default StyleSheet.create({
     addItemButton: {
         flex: 0.1,
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     categoriesContainer: {
         flex: 0.1,
-        height: 40,
-        width: 300,
         justifyContent: 'flex-start',
         alignItems: 'center',
         flexDirection: 'row',
