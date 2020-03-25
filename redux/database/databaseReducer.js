@@ -5,6 +5,7 @@ const initialState = {
     name: "",
     email: "",
     data: [],
+    favourites: [],
     categories: [],
     activeCategory: null,
     mailBox: {},
@@ -27,6 +28,7 @@ export default function databaseReducer(state = initialState, {type, payload}){
                 name: payload.name,
                 email: payload.email,
                 data: payload.data,
+                favourites: payload.favourites,
                 mailBox: payload.mailBox,
                 categories: payload.categories,
                 activeCategory: payload.activeCategory

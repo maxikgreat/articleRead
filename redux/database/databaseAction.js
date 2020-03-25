@@ -102,6 +102,44 @@ export function sendRecord(email, record){
     }
 }
 
+export function addToFavourite(record){
+    return async dispatch => {
+        await firebase.database().ref('/' + firebase.auth().currentUser.uid)
+            .child("favourites").child(record.id).set({
+                title: record.title,
+                url: record.url,
+                type: record.type ? record.type : null
+            })
+            .then(() => {
+                firebase.database().ref('/' + firebase.auth().currentUser.uid)
+                    .child("data").child(record.id).child("isFavourite").set(true)
+            })
+                .catch(error => {
+                    dispatch({
+                        type: SET_MESSAGE,
+                        payload: error.message
+                    })
+                })
+    }
+}
+
+export function deleteFromFavourites(id){
+    return async dispatch => {
+        await firebase.database().ref('/' + firebase.auth().currentUser.uid)
+            .child("favourites").child(id).set(null)
+            .then(() => {
+                firebase.database().ref('/' + firebase.auth().currentUser.uid)
+                    .child("data").child(id).child("isFavourite").set(false)
+            })
+                .catch(error => {
+                    dispatch({
+                        type: SET_MESSAGE,
+                        payload: error.message
+                    })
+                })
+    }
+}
+
 export function deleteRecord(id){
     return async dispatch => {
         await firebase.database().ref('/' + firebase.auth().currentUser.uid)

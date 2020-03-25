@@ -15,6 +15,7 @@ const ModalCompBookmark = ({categories, modalVisible, setVisible}) => {
         dispatch(addRecord({
             title: values.bookName,
             url: values.url,
+            isFavourite: false,
             type: currentCat ? categories.find(item => item.id === currentCat) : null
         }))
         setVisible(false)

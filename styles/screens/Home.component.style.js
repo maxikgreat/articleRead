@@ -37,6 +37,11 @@ export default StyleSheet.create({
         borderRadius:30,
         backgroundColor:'transparent'
     },
+    firstRecContainer: {
+        flex: 0.9,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
     createRecord: {
         backgroundColor: "#cc0000",
         shadowColor: "#000",

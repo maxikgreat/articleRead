@@ -40,6 +40,7 @@ const UserRecords = ({records, categories, activeCategory, setVisibleModal}) => 
                                     url = {item.url}
                                     id = {item.id}
                                     type = {item.type}
+                                    isFavourite = {item.isFavourite}
                                     categories = {categories}
                                 />
                             )

@@ -16,11 +16,20 @@ export default StyleSheet.create({
         alignItems: 'center',
         borderRadius: 30
     },
+    infoContainer: {
+        flexDirection: 'row'
+    },
+    restInfoContainer: {
+        alignItems: 'flex-end'
+    },
     recordTitle: {
-        fontSize: 20
+        fontSize: 20,
+        marginRight: 5
+    },
+    recordUrl: {
+        fontStyle: 'italic'
     },
     recordType: {
-        fontSize: 14,
         color: '#cc0000'
     },
     addItemText: {

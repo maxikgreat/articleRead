@@ -66,7 +66,7 @@ const Main = ({navigation}) => {
                                         setVisibleModal = {setVisible}
                                     />
                                     :
-                                    <>
+                                    <View style={styles.firstRecContainer}>
                                         <Text style={styles.introText}>You have no records yet. Let's fix it!</Text>
                                         <TouchableOpacity
                                             style={[styles.buttonContainer, styles.createRecord]}
@@ -74,7 +74,7 @@ const Main = ({navigation}) => {
                                         >
                                             <Text style={styles.addFirstText}>Add first record</Text>
                                         </TouchableOpacity>
-                                    </>
+                                    </View>
                                 }
                             </View>
                         </>
