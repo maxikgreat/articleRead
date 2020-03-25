@@ -1,12 +1,11 @@
 import React from 'react'
-import {SafeAreaView, View, Text, TouchableOpacity, FlatList} from 'react-native'
+import {SafeAreaView, View, Text, TouchableOpacity, FlatList, ImageBackground} from 'react-native'
 import styles from '../styles/screens/MailBox.component.style'
 import {Ionicons} from "@expo/vector-icons";
 import {useSelector} from "react-redux";
 import objToArray from "../helpFunctions/objToArray";
 import Message from "../components/Home/Message";
 import bgMessages from '../assets/images/bgMessages.jpg'
-import {ImageBackground} from "react-native-web";
 
 const MailBox = ({navigation}) => {
 

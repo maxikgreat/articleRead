@@ -17,7 +17,8 @@ export default StyleSheet.create({
         flex: 0.85,
         alignItems: 'flex-start',
         paddingBottom: 100,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        justifyContent: 'center'
     },
     noMessText: {
       fontSize: 20
