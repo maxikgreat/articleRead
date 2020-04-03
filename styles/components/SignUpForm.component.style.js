@@ -3,8 +3,9 @@ import {StyleSheet} from "react-native";
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'flex-end',
         alignItems: 'center',
+        paddingBottom: 150
     },
     inputContainer: {
         borderBottomColor: '#F5FCFF',
@@ -24,6 +25,18 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.35,
         shadowRadius: 3.84,
         elevation: 5,
+    },
+    logoImage: {
+        width: 250,
+        height: 50,
+        resizeMode: 'cover',
+        shadowColor: "#fff",
+        shadowOffset: {
+            width: 5,
+            height: 10,
+        },
+        shadowOpacity: 1.55,
+        shadowRadius: 5.84,
     },
     inputs:{
         height:45,
@@ -65,11 +78,15 @@ const styles = StyleSheet.create({
     loginText: {
         color: '#fff',
         textTransform: 'uppercase',
+        fontWeight: 'bold'
     },
     togglerText:{
         color:"#fff",
         fontWeight:'bold',
-        fontSize: 15,
+        textDecorationLine: 'underline',
+        fontSize: 17,
+        borderColor: '#fff',
+        marginTop: 20
     },
     message:{
         color:"#fff",

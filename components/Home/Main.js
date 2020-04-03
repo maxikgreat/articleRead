@@ -49,15 +49,17 @@ const Main = ({navigation}) => {
                                     <TouchableOpacity
                                         onPress = {() => {navigation.navigate("MailBox")}}
                                     >
-                                        <Ionicons name={'md-mail'} size={30} color={'#cc0000'} />
                                         {
                                             userData.mailBox
-                                                ? <View style={styles.countMessage}>
-                                                    <Text style={styles.countText}>{objToArray(userData.mailBox).length}</Text>
-                                                </View>
-                                                : null
-                                        }
 
+                                                ? <>
+                                                    <Ionicons name={'md-notifications'} size={30} color={'#cc0000'} />
+                                                    <View style={styles.countMessage}>
+                                                        <Text style={styles.countText}>{objToArray(userData.mailBox).length}</Text>
+                                                    </View>
+                                                </>
+                                                : <Ionicons name={'md-notifications-outline'} size={30} color={'#cc0000'} />
+                                        }
                                     </TouchableOpacity>
                                 </View>
                             </View>
@@ -72,7 +74,8 @@ const Main = ({navigation}) => {
                                     />
                                     :
                                     <View style={styles.firstRecContainer}>
-                                        <Text style={styles.introText}>You have no records yet. Let's fix it!</Text>
+                                        <Text style={styles.introText}>You have no records yet.</Text>
+                                        <Text style={styles.introText}>Let's fix it!</Text>
                                         <TouchableOpacity
                                             style={[styles.buttonContainer, styles.createRecord]}
                                             onPress={() => {showModal()}}

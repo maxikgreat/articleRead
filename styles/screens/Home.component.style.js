@@ -13,6 +13,8 @@ export default StyleSheet.create({
         width: '100%',
         justifyContent: 'space-between',
         alignItems: 'center',
+        borderBottomWidth: 3,
+        borderBottomColor: '#cc0000'
     },
     headerText: {
         fontSize: 30
@@ -24,9 +26,7 @@ export default StyleSheet.create({
     introText:{
         fontWeight: 'bold',
         fontSize: 20,
-        marginTop: 50,
-        marginBottom: 50,
-        backgroundColor: '#fff',
+        textAlign: 'center'
     },
     buttonContainer: {
         height:45,
@@ -40,7 +40,7 @@ export default StyleSheet.create({
     firstRecContainer: {
         flex: 0.9,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'flex-end'
     },
     createRecord: {
         backgroundColor: "#cc0000",
@@ -55,7 +55,8 @@ export default StyleSheet.create({
     },
     addFirstText: {
         textTransform: 'uppercase',
-        color: '#fff'
+        color: '#fff',
+        fontWeight: 'bold'
     },
     countMessage: {
         position: 'absolute',

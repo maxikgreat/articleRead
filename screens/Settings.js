@@ -1,4 +1,4 @@
-import {View, ImageBackground} from "react-native";
+import {View, ImageBackground, Text} from "react-native";
 import React, {PureComponent} from 'react';
 import Logout from "../components/Settings/Logout";
 import ChangeName from "../components/Settings/ChangeName";
@@ -14,15 +14,20 @@ class Settings extends PureComponent{
         return(
             <ImageBackground source={bgScreens} style={{width: '100%', height: '100%'}}>
                 <View style={styles.container}>
-                    <View style={styles.subContainer}>
-                        <ChangeName
-                            message = {this.props.userDatabase.message}
-                        />
+                    <View style = {styles.headerContainer}>
+                        <Text style={styles.headerTitle}>Settings</Text>
                     </View>
-                    <View style={styles.subContainer}>
-                        <ChangePass
-                            message = {this.props.userDatabase.message}
-                        />
+                    <View style={styles.mainContainer}>
+                        <View style={styles.subContainer}>
+                            <ChangeName
+                                message = {this.props.userDatabase.message}
+                            />
+                        </View>
+                        <View style={styles.subContainer}>
+                            <ChangePass
+                                message = {this.props.userDatabase.message}
+                            />
+                        </View>
                     </View>
                     <Logout />
                 </View>

@@ -33,10 +33,9 @@ export default StyleSheet.create({
         color: '#cc0000'
     },
     addItemText: {
-        fontSize: 20,
-        marginLeft: 5,
         textTransform: 'uppercase',
-        color: '#cc0000'
+        color: '#fff',
+        fontWeight: 'bold'
     },
     addItemButton: {
         flex: 0.1,
@@ -51,19 +50,29 @@ export default StyleSheet.create({
         flexDirection: 'row',
     },
     restCategories: {
-        marginTop: 5
+        marginTop: 3
     },
     categoryItem: {
-        padding: 10,
+        //padding: 10,
+        marginLeft: 5
     },
     categoryItemText: {
         fontSize: 18,
-        color: '#000'
+        color: '#000',
+        borderWidth: 2,
+        borderColor: '#cc0000',
+        borderRadius: 10,
+        padding: 10,
     },
     activeCategory: {
-        padding: 10,
-        backgroundColor: '#cc0000',
+        marginLeft: 5,
+        fontSize: 18,
+        color: '#000',
+        borderWidth: 1,
+        borderColor: '#cc0000',
         borderRadius: 10,
+        padding: 10,
+        backgroundColor: '#cc0000'
     },
     activeCategoryText: {
         fontSize: 18,
@@ -72,7 +81,23 @@ export default StyleSheet.create({
     noRecordsText: {
         marginTop: 20,
         fontSize: 20
-    }
+    },
+    createRecord: {
+        height:45,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop:20,
+        borderRadius:30,
+        backgroundColor: "#cc0000",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 9,
+        },
+        shadowOpacity: 0.50,
+        shadowRadius: 12.35,
+        elevation: 19,
+    },
 
 
 })

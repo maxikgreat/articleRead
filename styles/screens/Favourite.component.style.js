@@ -6,15 +6,18 @@ export default StyleSheet.create({
         padding: 15
     },
     headerContainer: {
-        flex: 0.15,
+        flex: 0.1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        borderBottomWidth: 3,
+        borderBottomColor: '#cc0000'
     },
     headerTitle: {
         fontSize: 30
     },
     mainContainer: {
-        flex: 0.85,
+        marginTop: 10,
+        flex: 0.9,
         alignItems: 'flex-start',
         paddingBottom: 100,
         flexDirection: 'row',

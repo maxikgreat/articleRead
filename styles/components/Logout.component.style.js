@@ -5,10 +5,11 @@ export default StyleSheet.create({
         height:45,
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop:50,
+        marginBottom:50,
         width:300,
         borderRadius:30,
         backgroundColor:'transparent'
+
     },
     logoutButton: {
         backgroundColor: "#cc0000",

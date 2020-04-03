@@ -5,12 +5,14 @@ import {
     View,
     TextInput,
     TouchableOpacity,
+    Image
 } from 'react-native';
 import styles from '../styles/components/SignUpForm.component.style'
 import {Ionicons} from "@expo/vector-icons";
 import validationSignInUp from "../helpFunctions/validation/validationSignInUp";
 import {useDispatch} from "react-redux";
 import {signUp} from "../redux/user/userAction";
+import logo from '../assets/images/logoName.png'
 
 const SignUpForm = ({toggleForm}) => {
 
@@ -29,7 +31,8 @@ const SignUpForm = ({toggleForm}) => {
 
         return (
             <View style={styles.container}>
-                <Ionicons name={"md-log-in"} size={80} color = {"#cc0000"}/>
+                {/*<Ionicons name={"md-log-in"} size={80} color = {"#cc0000"}/>*/}
+                <Image source={logo} style={styles.logoImage} />
                 <View style={styles.inputContainer}>
                     <TextInput style={styles.inputs}
                                placeholder="Email"
@@ -75,7 +78,6 @@ const SignUpForm = ({toggleForm}) => {
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    style={styles.buttonContainer}
                     onPress = {() => toggleForm()}
                 >
                     <Text style={styles.togglerText}>Have an account?</Text>

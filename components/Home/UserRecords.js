@@ -53,10 +53,9 @@ const UserRecords = ({records, categories, activeCategory, setVisibleModal}) => 
 
             </SafeAreaView>
             <TouchableOpacity
-                style={styles.addItemButton}
+                style={styles.createRecord}
                 onPress = {() => setVisibleModal(true)}
             >
-                <Ionicons name={'md-add-circle-outline'} size={50} color={'#cc0000'} />
                 <Text style={styles.addItemText}>Add record</Text>
             </TouchableOpacity>
         </>
